@@ -1,4 +1,5 @@
-a.out
-minishell
 .vscode
+.DS_*
 *.py
+*.out
+minishell
