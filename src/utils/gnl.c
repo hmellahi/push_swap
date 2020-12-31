@@ -1,10 +1,10 @@
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 #undef BUFF_SIZE
 # define BUFF_SIZE 64
 
-int		ft_free(char **fr1, char **fr2)
+static int		ft_free(char **fr1, char **fr2)
 {
 	if (fr1 != NULL)
 	{
@@ -19,7 +19,7 @@ int		ft_free(char **fr1, char **fr2)
 	return (-1);
 }
 
-int		got_line(char **fd_table, char **br, char **line)
+static int		got_line(char **fd_table, char **br, char **line)
 {
 	char		*fr1;
 

@@ -1,11 +1,14 @@
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include "functions.h"
 
-# define GNL_OPEN_MAX 8
+//This the max file descriptors that GNL can work with.
+# define GNL_OPEN_MAX 8 
 
 typedef char            t_bool;
 
@@ -21,5 +24,10 @@ typedef struct          s_btree
     struct s_btree      *r;
     struct s_btree      *l;
 }                       t_btree;
+
+typedef struct          s_file
+{
+
+}                       t_file;
 
 #endif
