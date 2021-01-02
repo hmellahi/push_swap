@@ -1,13 +1,15 @@
 
 .PHONEY: all clean fclean re bonus
 
-NAME	= minishell
-CC		= clang
-FLAGS	= -Werror -Wextra -Wall
+NAME		= 	minishell
+CC			=	clang
+FLAGS		= 	-Werror -Wextra -Wall
 
-UTILS	=	#bintree.c linked_list.c num_tools_0.c str_tools_0.c\
-			#str_tools_1.c str_tools_2.c gnl.c
-PARSER	=	parser.c
+UTILS		=	#bintree.c linked_list.c num_tools_0.c str_tools_0.c\
+				#str_tools_1.c str_tools_2.c gnl.c
+TOKENIZER	=	quote_checker.c
+LEXER		=	
+PARSER		=	
 
 DBG		=	MY_DBG.C my_dbg.h
 

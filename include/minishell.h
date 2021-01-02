@@ -5,10 +5,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "macros.h"
 # include "functions.h"
-
-//This the max file descriptors that GNL can work with.
-# define GNL_OPEN_MAX 8 
 
 typedef char            t_bool;
 
@@ -27,7 +25,7 @@ typedef struct          s_btree
 
 typedef struct          s_file
 {
-
+    
 }                       t_file;
 
 #endif
