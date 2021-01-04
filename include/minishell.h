@@ -4,9 +4,7 @@
 
 # include <stdio.h>
 # include <unistd.h>
-# include <fcntl.h>
-# include "macros.h"
-# include "functions.h"
+# include <stdlib.h>
 
 typedef char            t_bool;
 
@@ -27,5 +25,15 @@ typedef struct          s_file
 {
     
 }                       t_file;
+
+//This holds everything. Well.. almost.
+
+typedef struct          s_env
+{
+    
+}                       t_env;
+
+# include "macros.h"
+# include "functions.h"
 
 #endif

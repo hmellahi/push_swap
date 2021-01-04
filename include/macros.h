@@ -2,7 +2,7 @@
 #ifndef MACROS_H
 # define MACROS_H
 
-# define PROGRAM_NAME "minishell"
+# define SHELL_NAME "minishell"
 
 //Macrofication
 # define FALSE              0
@@ -21,6 +21,11 @@
 # define SINGLE_QT      '\''
 # define DOUBLE_QT      '"'
 # define BACK_SLASH     '\\'
+# define EOL            '\n'
+
+//BUFF_SIZE for get_next_line
+# undef BUFF_SIZE
+#  define BUFF_SIZE 128
 
 //Max file descriptors that can be opened simultaneously
 # ifndef OPEN_MAX
@@ -31,6 +36,7 @@
 # define MALLOC(ptr)        (ptr) = malloc(sizeof(*(ptr) ))
 # define ARRLLOC(p, l)      (p) = malloc(sizeof(*(p) ) * l)
 
+# define ENV                t_env *env
 
 //define signal codes
 

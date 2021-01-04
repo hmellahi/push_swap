@@ -1,34 +1,45 @@
 
 .PHONEY: all clean fclean re bonus
 
-NAME		= 	minishell
-CC			=	clang
-FLAGS		= 	-Werror -Wextra -Wall
+NAME			= 	minishell
+CC				=	clang
+FLAGS			= 	-Werror -Wextra -Wall
+UTILS			=	get_line.c strtools_0.c strtools_1.c strtools_2.c
+					#num_tools_0.c\
+					#bintree.c linked_list.c
 
-UTILS		=	#bintree.c linked_list.c num_tools_0.c str_tools_0.c\
-				#str_tools_1.c str_tools_2.c gnl.c
-TOKENIZER	=	quote_checker.c
-LEXER		=	
-PARSER		=	
+CONSTRUCTORS	=	env.c
+TOKENIZER		=	quote_checker.c
+LEXER			=	
+PARSER			=	
+EXECUTER		=	
 
-DBG		=	MY_DBG.C my_dbg.h
+DBG				=	MY_DBG.C my_dbg.h
 
-SRC		=	src/minishell.c\
-			$(PARSER:%.c=./src/parser/%.c)\
-			$(UTILS:%.c=./src/utils/%.c)
+SRC				=	src/minishell.c\
+					$(PARSER:%.c=./src/parser/%.c)\
+					$(UTILS:%.c=./src/utils/%.c)\
+					$(CONSTRUCTORS:%.c=./src/constructors/%.c)
 
-OBJ		=	minishell.o\
-			$(PARSER:.c=.o)\
-			$(UTILS:.c=.o)
+OBJ				=	minishell.o\
+					$(PARSER:.c=.o)\
+					$(CONSTRUCTORS:.c=.o)\
+					$(UTILS:.c=.o)
 
-COMPILE	= $(CC) -I include -c $(SRC) #$(FLAGS)
-LINK = $(CC) $(OBJ) -o $(NAME)  #$(FLAGS)
+## For debuging:
+################
+DBG_FLAGS		=  -g 
+
+###################
+
+COMPILE	= $(CC) -I include -c $(SRC) #$(DBG_FLAGS)
+LINK = $(CC) $(OBJ) -o $(NAME)  #$(DBG_FLAGS)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(COMPILE)
-	@$(CC) $(OBJ) -Iinclude -g -o $(NAME)
+	@$(CC) $(OBJ) -Iinclude -o $(NAME)
 
 $(OBJ): $(SRC)
 	@$(COMPILE)
