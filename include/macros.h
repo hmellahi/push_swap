@@ -5,12 +5,12 @@
 # define SHELL_NAME "minishell"
 
 //Macrofication
-# define FALSE              0
-# define TRUE               1
-# define NOT                !
-# define AND                &&
-# define OR                 ||
-# define ELIF               else if
+# define FALSE          0
+# define TRUE           1
+# define NOT            !
+# define AND            &&
+# define OR             ||
+# define ELIF           else if // why not?
 
 # define DIGITS         "0123456789"
 # define ASCII_LOWER    "abcdefghijklmnopqrstuvwxyz"
@@ -22,10 +22,11 @@
 # define DOUBLE_QT      '"'
 # define BACK_SLASH     '\\'
 # define EOL            '\n'
+# define FLUSH          put_char('\n')
 
 //BUFF_SIZE for get_next_line
 # undef BUFF_SIZE
-#  define BUFF_SIZE 128
+#  define BUFF_SIZE 1
 
 //Max file descriptors that can be opened simultaneously
 # ifndef OPEN_MAX

@@ -1,6 +1,24 @@
 
 #include "minishell.h"
 
+char	*str_dup(const char *str)
+{
+	size_t			i;
+	size_t			len;
+	char			*dup;
+
+	len = str_len(str);
+	//ARRLLOC(dup, len + 1);
+	dup = (char *)malloc(len + 1);
+	if (!dup)
+		return (0);
+	dup[len] = 0;
+	i = -1;
+	while (++i < len)
+		dup[i] = str[i];
+	return (dup);
+}
+
 char	*str_join(char const *s1, char const *s2)
 {
 	unsigned int	i;
@@ -28,7 +46,7 @@ char	*str_join(char const *s1, char const *s2)
 	return (s3);
 }
 
-char	*sub_str(char const *s, unsigned int start, size_t len)
+char	*sub_str(char const *s, size_t start, size_t len)
 {
 	unsigned int	i;
 	unsigned int	slen;

@@ -28,7 +28,7 @@ OBJ				=	minishell.o\
 
 ## For debuging:
 ################
-DBG_FLAGS		=  -g 
+DBG_FLAGS		=  -I dbg -g 
 
 ###################
 

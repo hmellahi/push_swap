@@ -20,10 +20,15 @@ t_bool	find_eol(char *buff)
 
 size_t	line_len(const char *line)
 {
-	size_t len;
+	return 0;
+	//return ((size_t)char_addr(EOL, line) - line);
+}
 
-	len = 0;
-	return (char_addr(EOL, line) - line);
+t_bool	line_isempty(char *line)
+{
+	if (line[0] == EOL AND line[1] == 0)
+		return (TRUE);
+	return (FALSE);
 }
 
 t_bool  str_cmp(char *s1, char *s2)

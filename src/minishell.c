@@ -1,61 +1,77 @@
 
-#include "minishell.h"
+# include "minishell.h"
 
 int read_input(char **input)
 {
-    int ret;
+	ssize_t read_ret;
+    char    *buff;
+    char    *p;
 
-    ret = get_line(1, input);
-    if (ret == -1)
+    ARRLLOC(buff, 2);
+    *input = str_dup("");
+    while ((read_ret = read(0, buff, 1)) != -1)
+    {
+        buff[read_ret] = 0;
+        if (*buff == EOL)
+            return 0;
+        p = *input;
+        *input = str_join(*input, buff);
+        free(p);
+    }
+    if (read_ret == -1)
         return (-1);
     return (0);
 }
 
 int shell_prompt(ENV)
 {
-    //This gets updated in each function call,
-    // if an error occured, it gets a non-zero value.
     int     ret; 
     char    *input;
 
 /*
     TODO:
-        -wait for input
+        +wait for input
         -tokenize input
-        -run  lexer
+        -run lexer
         -parse
         -execute
 */
+
     put_str(SHELL_NAME);
     put_str("$ ");
 
-    //ret = 0;
-    ret = read_input(&input);
-    if (ret)
-        return (ret);
-    else if (line_isempty(&input))
+    if (read_input(&input) == -1)
+        return (-1);
+    else if (line_isempty(input))
+    {
+        //FLUSH;
         return (0);
-
-    ret = tokenize(input, env);
-    if (ret)
-        return ret;
-    //ret = lex_tokens();  //Assign each token to it's
-    if (ret)
-        return (ret);
+    }
+    //print(input);
+    //ret = tokenize(input, env);
+    //ret = lex_tokens();
     //ret = parse_tokens();
-    if (ret)
-        return (ret);
     //ret = execute();
-    return (ret);
+    return (0);
 }
 
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv, char **env_vars)
 {
     t_env   *env;
+    char    *shell_ret;
 
     env = init_env();
+    
+    //env->argc = argc;
+    //env->argv = argv;
+    //env->env_vars = env_vars;
+    int i = 0;
     while (1)
+    {
+        //printf("[%d]\n", i++);
         if (shell_prompt(env))
-            return -1;
+            break;
+    }
+    //Free allocated mem
     return (0);
 }

@@ -35,5 +35,6 @@ typedef struct          s_env
 
 # include "macros.h"
 # include "functions.h"
+# include "../dbg/my_dbg.h"
 
 #endif
