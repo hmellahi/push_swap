@@ -8,7 +8,7 @@ t_bool check_quotes(char *str)
     t_bool  double_quotes;
     t_bool  single_quotes;
 
-    len = ft_strlen(str);
+    len = str_len(str);
     double_quotes = is_str_quoted(str, DOUBLE_QT);
     single_quotes = double_quotes || is_str_quoted(str, SINGLE_QT);
     if (double_quotes)
@@ -42,16 +42,17 @@ t_bool  check_quoted_str(char *str, char c)
     int i;
     int len;
 
-    len = ft_strlen(str) - 1;
+    len = str_len(str) - 1;
     i = 0;
     while (++i < len)
         if (str[i] == c AND str[i - 1] != BACK_SLASH)
             return (TRUE);
     return (FALSE);
 }
+
 t_bool  is_str_quoted(char *str, char mark)
 {
-    return (str[0] == mark && str[ft_strlen(str) - 1] == mark);
+    return (str[0] == mark && str[str_len(str) - 1] == mark);
 }
 
 t_bool  is_bad_quoted(char *str)
@@ -60,7 +61,7 @@ t_bool  is_bad_quoted(char *str)
     char    b;
     
     a = str[0];
-    b = str[ft_strlen(str) - 1];
+    b = str[str_len(str) - 1];
     if (a == SINGLE_QT AND b != SINGLE_QT)
         return (TRUE);
     else if (a != SINGLE_QT AND b == SINGLE_QT)

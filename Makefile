@@ -4,12 +4,14 @@
 NAME			= 	minishell
 CC				=	clang
 FLAGS			= 	-Werror -Wextra -Wall
-UTILS			=	get_line.c strtools_0.c strtools_1.c strtools_2.c
-					#num_tools_0.c\
-					#bintree.c linked_list.c
 
+#Source Files
+UTILS			=	strtools_0.c strtools_1.c strtools_2.c\
+					#num_tools_0.c\
+					get_line.c \
+					linked_list.c\ #bintree.c
 CONSTRUCTORS	=	env.c
-TOKENIZER		=	quote_checker.c
+TOKENIZER		=	quotes_checker.c get_tokens.c
 LEXER			=	
 PARSER			=	
 EXECUTER		=	
@@ -17,17 +19,19 @@ EXECUTER		=
 DBG				=	MY_DBG.C my_dbg.h
 
 SRC				=	src/minishell.c\
+					$(TOKENIZER:%.c=./src/tokenizer/%.c)\
 					$(PARSER:%.c=./src/parser/%.c)\
 					$(UTILS:%.c=./src/utils/%.c)\
 					$(CONSTRUCTORS:%.c=./src/constructors/%.c)
 
 OBJ				=	minishell.o\
+					$(TOKENIZER:.c=.o)\
 					$(PARSER:.c=.o)\
-					$(CONSTRUCTORS:.c=.o)\
-					$(UTILS:.c=.o)
+					$(UTILS:.c=.o)\
+					$(CONSTRUCTORS:.c=.o)
 
 ## For debuging:
-################
+
 DBG_FLAGS		=  -I dbg -g 
 
 ###################
@@ -43,6 +47,9 @@ $(NAME): $(OBJ)
 
 $(OBJ): $(SRC)
 	@$(COMPILE)
+
+run: all
+	@./$(NAME)
 
 clean:
 	@rm -rf *.o

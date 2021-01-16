@@ -59,13 +59,11 @@ int main(int argc, char **argv, char **env_vars)
 {
     t_env   *env;
     char    *shell_ret;
-
-    env = init_env();
+    int     i;
     
-    //env->argc = argc;
-    //env->argv = argv;
-    //env->env_vars = env_vars;
-    int i = 0;
+    env = init_env(argc, argv, env_vars);
+    
+    i = 0;
     while (1)
     {
         //printf("[%d]\n", i++);

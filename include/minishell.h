@@ -23,15 +23,23 @@ typedef struct          s_btree
 
 typedef struct          s_file
 {
-    
+    int                 fd;
+    char                *name;
 }                       t_file;
 
 //This holds everything. Well.. almost.
-
 typedef struct          s_env
 {
+    int                 argc;
+    char                **argv;
+    char                **env_var;
     
 }                       t_env;
+
+typedef struct          s_token
+{
+    
+}                       t_token;
 
 # include "macros.h"
 # include "functions.h"
