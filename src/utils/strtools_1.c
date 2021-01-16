@@ -11,26 +11,6 @@ char	*char_addr(char c, char *buff)
 	return (NULL);
 }
 
-t_bool	find_eol(char *buff)
-{
-	if (NOT buff)
-        return (FALSE);
-	return (char_addr(EOL, buff) ? TRUE : FALSE);
-}
-
-size_t	line_len(const char *line)
-{
-	return 0;
-	//return ((size_t)char_addr(EOL, line) - line);
-}
-
-t_bool	line_isempty(char *line)
-{
-	if (line[0] == EOL AND line[1] == 0)
-		return (TRUE);
-	return (FALSE);
-}
-
 t_bool  str_cmp(char *s1, char *s2)
 {
 	size_t len1;

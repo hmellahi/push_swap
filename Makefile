@@ -11,7 +11,7 @@ UTILS			=	strtools_0.c strtools_1.c strtools_2.c\
 					get_line.c \
 					linked_list.c\ #bintree.c
 CONSTRUCTORS	=	env.c
-TOKENIZER		=	quotes_checker.c get_tokens.c
+TOKENIZER		=	quotes_checker.c
 LEXER			=	
 PARSER			=	
 EXECUTER		=	
@@ -31,7 +31,6 @@ OBJ				=	minishell.o\
 					$(CONSTRUCTORS:.c=.o)
 
 ## For debuging:
-
 DBG_FLAGS		=  -I dbg -g 
 
 ###################

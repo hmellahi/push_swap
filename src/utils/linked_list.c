@@ -18,6 +18,7 @@ void    push_back(LIST, void  *data)
 {
     t_node      *iter;
 
+    //new_node if null
     iter = *list;
     while (iter)
         iter = iter->next;

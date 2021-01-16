@@ -47,8 +47,8 @@ int shell_prompt(ENV)
         //FLUSH;
         return (0);
     }
-    //print(input);
-    //ret = tokenize(input, env);
+    print(input);
+    ret = tokenize(input, env);
     //ret = lex_tokens();
     //ret = parse_tokens();
     //ret = execute();
