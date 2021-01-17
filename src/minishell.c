@@ -9,6 +9,8 @@ int read_input(char **input)
 
     ARRLLOC(buff, 2);
     *input = str_dup("");
+    if (!*input || !buff)
+        return (-1);
     while ((read_ret = read(0, buff, 1)) != -1)
     {
         buff[read_ret] = 0;
@@ -23,7 +25,7 @@ int read_input(char **input)
     return (0);
 }
 
-int shell_prompt(ENV)
+int shell_prompt(t_env *env)
 {
     int     ret; 
     char    *input;

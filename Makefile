@@ -6,12 +6,14 @@ CC				=	clang
 FLAGS			= 	-Werror -Wextra -Wall
 
 #Source Files
-UTILS			=	strtools_0.c strtools_1.c strtools_2.c\
+UTILS			=	strtools_0.c strtools_1.c strtools_2.c strtools_3.c\
+					linked_list.c
 					#num_tools_0.c\
-					get_line.c \
-					linked_list.c\ #bintree.c
+					#get_line.c \
+					#bintree.c
+
 CONSTRUCTORS	=	env.c
-TOKENIZER		=	quotes_checker.c
+TOKENIZER		=	quotes_checker.c tokenize.c
 LEXER			=	
 PARSER			=	
 EXECUTER		=	

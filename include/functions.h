@@ -23,6 +23,14 @@ t_env       *init_env(int argc, char **argv, char **env_var);
 int         shell_prompt(ENV);
 int         read_input(char **input);
 
+
+// tokenizer
+int         tokenize(char *input, ENV);
+char        *get_token(ENV, char *input, int *i);
+char        *get_quoted_token(char *input, int *i);
+char        *tokenize_single_quoted(char *input, int *i);
+char        *tokenize_double_quoted(char *input, int *i);
+
 // strtools_0
 size_t      str_len(const char *str);
 void        put_char(char c);
@@ -36,6 +44,7 @@ t_bool      find_eol(char *buff);
 t_bool      line_isempty(char *line);
 t_bool      str_cmp(char *s1, char *s2);
 t_bool      str_ncmp(char *s1, char *s2, int max);
+//char        *char_addr(char c, char **buff);
 
 // strtools_2
 char        *str_dup(const char *str);
@@ -60,7 +69,8 @@ size_t      list_size(t_node    *list);
 void        list_iter(LIST, void(*fun)(void **));
 void        safe_free(void **p);
 void        destroy_lst(LIST);
-void        delete_lst(LIST) ;
+void        delete_lst(LIST);
+
 
 //Parsing 
 t_bool      split_by_type(char *buff, t_node **tokens);

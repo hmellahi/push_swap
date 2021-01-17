@@ -31,22 +31,22 @@ char	*str_join(char const *s1, char const *s2)
 
 char	*sub_str(char const *s, size_t start, size_t len)
 {
+	char			*sub;
+	unsigned int	sublen;
 	unsigned int	i;
-	unsigned int	slen;
-	char			*s2;
 
 	if (!s)
 		return (NULL);
-	slen = str_len(s);
-	if (start > slen)
+	sublen = str_len(s);
+	if (start > sublen)
 		return (str_dup(""));
-	if (len > slen)
-		len = slen;
-	if (!(s2 = (char *)malloc((len + 1) * sizeof(char))))
+	if (len > sublen)
+		len = sublen;
+	if (!(sub = (char *)malloc((len + 1) * sizeof(char))))
 		return (NULL);
 	i = 0;
 	while (i < len && s[start])
-		s2[i++] = s[start++];
-	s2[i] = '\0';
-	return (s2);
+		sub[i++] = s[start++];
+	sub[i] = '\0';
+	return (sub);
 }

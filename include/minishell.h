@@ -33,12 +33,17 @@ typedef struct          s_env
     int                 argc;
     char                **argv;
     char                **env_var;
+    t_node              *tokens;
+
     
 }                       t_env;
 
 typedef struct          s_token
 {
-    
+    char                *token;
+    char                *type;
+    char                *len;
+    char                *order;
 }                       t_token;
 
 # include "macros.h"

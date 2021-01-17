@@ -33,6 +33,8 @@
 #  define OPEN_MAX 4096
 # endif
 
+// 42 norminette: parameterized macros are forbidden
+
 //Use safe_malloc()
 # define MALLOC(ptr)        (ptr) = malloc(sizeof(*(ptr) ))
 # define ARRLLOC(p, l)      (p) = malloc(sizeof(*(p) ) * l)

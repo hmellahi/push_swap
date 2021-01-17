@@ -5,7 +5,12 @@ t_bool	find_eol(char *buff)
 {
 	if (!buff)
 		return (FALSE);
-	return (char_addr(EOL, buff) ? TRUE : FALSE);
+	while (*buff)
+		if (*buff != EOL)
+			return (TRUE);
+		else
+			(*buff)++;
+	return (FALSE);
 }
 
 size_t	line_len(const char *line)
@@ -28,7 +33,6 @@ char	*str_dup(const char *str)
 	char			*dup;
 
 	len = str_len(str);
-	//ARRLLOC(dup, len + 1);
 	dup = (char *)malloc(len + 1);
 	if (!dup)
 		return (0);

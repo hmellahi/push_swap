@@ -1,13 +1,17 @@
 
 #include "minishell.h"
 
-char	*char_addr(char c, char *buff)
+char	*char_addr(char c, char **buff)
 {
-	while (*buff)
-		if (*buff == c)
-			return (buff);
-		else
-            buff++;
+	// char *bf;
+
+	// bf = &(*buff);
+	// //bf = *buff;
+	// while (*bf)
+	// 	if (*bf == c)
+	// 		return (bf);
+	// 	else
+    //         *(bf)++;
 	return (NULL);
 }
 

@@ -8,6 +8,7 @@ size_t	str_len(const char *str)
 	len = 0;
 	while (*str && ++len)
 		str++;
+
 	return len;
 }
 
