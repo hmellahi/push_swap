@@ -9,6 +9,8 @@ t_token    *tokenize_quoted_input(ENV)
         token = tokenize_single_quoted(env);
     else
         token = tokenize_double_quoted(env);
+    if (token)
+        token->quoted = TRUE;
     return (token);
 }
 
@@ -57,25 +59,37 @@ t_token    *tokenize_double_quoted(ENV)
     //should be cleaned from backSlashes
 }
 
+# define ARR_SIZE 256
+
 t_token *get_token(ENV)
 {
     t_token *token;
+    t_array *skip;
     size_t  j;
+    short   k;
     char    *line;
+    
+    //To handle:
+    //  +[ cd d\ ir]
+    //  -[echo okay \\ > file]
+    //  -[echo okay \ > file]
 
-    line = env->input->line;
+    skip = new_array(ARR_SIZE);
+    k = 0;
     j = env->input->i + 1;
+    line = env->input->line;
     while (j < env->input->len)
     {
-        //[ cd d\ ir]
-        if (line[j] == ' ' && line[j - 1] != BACK_SLASH)
-        {
-            //j++;
+        if (line[j] == BACK_SLASH)
+            skip->arr[k++] = j;
+        else if (line[j] == ' ' && line[j - 1] != BACK_SLASH)
             break ;
-        }
         j++;
     }
-    token = new_token(sub_str(line, env->input->i, j));
+    // print("SKIPED");
+    // print_array(skip, TRUE);
+    // print("#########");
+    token = new_token(clean_sub_str(line, env->input->i, j, skip));
     env->input->i = j;
     return token;
 }

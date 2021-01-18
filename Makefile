@@ -6,7 +6,8 @@ CC				=	clang
 FLAGS			= 	-Werror -Wextra -Wall
 
 #Source Files
-UTILS			=	strtools_0.c strtools_1.c strtools_2.c strtools_3.c\
+UTILS			=	tmp_utils.c \
+					strtools_0.c strtools_1.c strtools_2.c strtools_3.c\
 					linked_list.c
 					#num_tools_0.c\
 					#get_line.c \
@@ -17,6 +18,7 @@ TOKENIZER		=	quotes_checker.c tokenize.c
 LEXER			=	
 PARSER			=	
 EXECUTER		=	
+
 
 DBG				=	MY_DBG.C
 

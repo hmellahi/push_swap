@@ -34,7 +34,7 @@ int shell_prompt(t_env *env)
 /*
     TODO:
         +wait for input
-        -tokenize input
+        +tokenize input
         -run lexer
         -parse
         -execute

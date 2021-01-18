@@ -29,11 +29,63 @@ char	*str_join(char const *s1, char const *s2)
 	return (s3);
 }
 
+t_bool	is_index_in_array(int index, t_array *array)
+{
+	int i;
+
+	i = 0;
+	while (i < array->size)
+		if (index == array->arr[i])
+			return (TRUE);
+		else
+			i++;
+	return (FALSE);
+}
+
+char	*clean_sub_str(char const *s, int start, int end, t_array *skip_index)
+{
+	char		*sub;
+	short		skip_num;
+	size_t		i;
+	size_t		len;
+
+	if (!s)
+		return (NULL);
+	len = str_len(s);
+	if (start > (int)len || end < 0)
+		return (str_dup(""));
+	start = start < 0 ? 0 : start;
+	end = end >= len ? len : end;
+	skip_num = 0;
+	if (skip_index != NULL)
+	{
+		while (skip_num < skip_index->size
+			&& skip_index->arr[skip_num] != -1)
+			skip_num++;
+	}
+	if (!(sub = malloc(end - start + 1 - skip_num)))
+		return (NULL);
+	i = 0;
+	while (start < end && s[start])
+	{
+		if (is_index_in_array(start, skip_index) == FALSE)
+		{
+			sub[i] = s[start];
+			i++;
+			start++;
+		}
+		else
+			start++;
+	}
+	sub[start] = '\0';
+	return (sub);
+}
+
 char	*sub_str(char const *s, int start, int end)
 {
 	char		*sub;
-	size_t		len;
 	size_t		i;
+	size_t		len;
 
 	if (!s)
 		return (NULL);

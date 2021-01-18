@@ -24,6 +24,7 @@ int         read_input(char **input);
 
 // constructos
 t_token     *new_token(void *tok);
+t_array     *new_array(int size);
 t_env       *init_env(int argc, char **argv, char **env_var);
 
 // tokenizer
@@ -53,6 +54,8 @@ char        *str_dup(const char *str);
 char        *str_join(const char *s1, const char *s2);
 char        *sub_str(
                     char const *s, int start, int end);
+char        *clean_sub_str(
+                    char const *s, int start, int end, t_array *arr );
 
 //Quotes stuff
 t_bool      check_quotes(char *str);
@@ -77,5 +80,8 @@ void        delete_lst(LIST);
 //Parsing 
 t_bool      split_by_type(char *buff, t_node **tokens);
 int         tokenize(char *buff, ENV);
+
+//tmp_utils
+void    print_array(t_array *arr, t_bool minus);
 
 #endif

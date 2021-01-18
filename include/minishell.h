@@ -28,12 +28,30 @@ typedef struct          s_file
     char                *name;
 }                       t_file;
 
+typedef struct          s_array
+{
+    int                 *arr;
+    int                 size;
+}                       t_array;
+
+// enum    e_types
+// {
+//         cmd,
+//         arg,
+//         semi,
+//         pipe,
+//         left,
+//         right,
+//         double_r
+// };
+
 typedef struct          s_token
 {
     char                *tok;
     char                *type;
     size_t              *len;
     int                 *order;
+    t_bool              quoted;
 }                       t_token;
 
 typedef struct          s_input
@@ -51,7 +69,6 @@ typedef struct          s_env
     char                **env_var;
     t_input             *input;
     t_node              *tokens;
-
     
 }                       t_env;
 
