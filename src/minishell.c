@@ -29,6 +29,7 @@ int shell_prompt(t_env *env)
 {
     int     ret; 
     char    *input;
+    size_t  len;
 
 /*
     TODO:
@@ -42,15 +43,12 @@ int shell_prompt(t_env *env)
     put_str(SHELL_NAME);
     put_str("$ ");
 
-    if (read_input(&input) == -1)
+    if (read_input(&env->input->line) == -1)
         return (-1);
-    else if (line_isempty(input))
-    {
-        //FLUSH;
-        return (0);
-    }
-    print(input);
-    ret = tokenize(input, env);
+    else if (line_isempty(env->input->line))
+        return (0); //FLUSH?;
+    print(env->input->line);
+    ret = tokenize_input(env);
     //ret = lex_tokens();
     //ret = parse_tokens();
     //ret = execute();
@@ -62,9 +60,12 @@ int main(int argc, char **argv, char **env_vars)
     t_env   *env;
     char    *shell_ret;
     int     i;
-    
+
+    // print(sub_str("0123456789abcdef", -2, 10));
+    // return 0;
+
     env = init_env(argc, argv, env_vars);
-    
+
     i = 0;
     while (1)
     {

@@ -23,8 +23,9 @@
 # define BACK_SLASH     '\\'
 # define EOL            '\n'
 # define FLUSH          put_char('\n')
+# define PASS           0;
 
-//BUFF_SIZE for get_next_line
+// BUFF_SIZE for get_next_line
 # undef BUFF_SIZE
 #  define BUFF_SIZE 1
 

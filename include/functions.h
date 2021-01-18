@@ -19,17 +19,19 @@
 */
 
 // main
-t_env       *init_env(int argc, char **argv, char **env_var);
 int         shell_prompt(ENV);
 int         read_input(char **input);
 
+// constructos
+t_token     *new_token(void *tok);
+t_env       *init_env(int argc, char **argv, char **env_var);
 
 // tokenizer
-int         tokenize(char *input, ENV);
-char        *get_token(ENV, char *input, int *i);
-char        *get_quoted_token(char *input, int *i);
-char        *tokenize_single_quoted(char *input, int *i);
-char        *tokenize_double_quoted(char *input, int *i);
+int         tokenize_input(ENV);
+t_token     *get_token(ENV);
+t_token     *tokenize_quoted_input(ENV);
+t_token     *tokenize_single_quoted(ENV);
+t_token     *tokenize_double_quoted(ENV);
 
 // strtools_0
 size_t      str_len(const char *str);
@@ -50,7 +52,7 @@ t_bool      str_ncmp(char *s1, char *s2, int max);
 char        *str_dup(const char *str);
 char        *str_join(const char *s1, const char *s2);
 char        *sub_str(
-                    char const *s, size_t start, size_t len);
+                    char const *s, int start, int end);
 
 //Quotes stuff
 t_bool      check_quotes(char *str);

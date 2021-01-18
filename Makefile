@@ -18,7 +18,7 @@ LEXER			=
 PARSER			=	
 EXECUTER		=	
 
-DBG				=	MY_DBG.C my_dbg.h
+DBG				=	MY_DBG.C
 
 SRC				=	src/minishell.c\
 					$(TOKENIZER:%.c=./src/tokenizer/%.c)\

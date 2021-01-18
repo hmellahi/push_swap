@@ -1,119 +1,112 @@
 
 #include "minishell.h"
 
-char *get_quoted_token(char *input, int *i)
+t_token    *tokenize_quoted_input(ENV)
 {
-    char    *token;
+    t_token    *token;
 
-    if (input[0] == SINGLE_QT)
-        token = tokenize_single_quoted(input, i);
+    if (env->input->line[env->input->i] == SINGLE_QT)
+        token = tokenize_single_quoted(env);
     else
-        token = tokenize_double_quoted(input, i);
+        token = tokenize_double_quoted(env);
     return (token);
 }
 
-char *tokenize_single_quoted(char *input, int *i)
+t_token    *tokenize_single_quoted(ENV)
 {
-    char    *token;
+    t_token     *token;
+    size_t      j;
+    char        *line;
 
-    return token;
-}
-
-char *tokenize_double_quoted(char *input, int *i)
-{
-    char    *token;
-    char    c;
-    char    pre;
-    int     k;
-    t_bool  done;
-
-    k = 0;
-    done = FALSE;
-    while (input[k] && input[k] != ' ')
+    line = env->input->line;
+    j = env->input->i + 1;
+    while (j < env->input->len)
     {
-        if (k == 0 && ++k)
-            continue;
-        c = input[k];
-        pre = input[k - 1];
-        
-        //TODO:
-        //-check if same
-        
-        if (c == DOUBLE_QT && pre != BACK_SLASH && (done = TRUE))
-            break ;
-        else if (c == DOUBLE_QT && pre == BACK_SLASH && ++k)
-            continue ;
-        k++;
-    }
-    if (done)
-    {
-        if (k - *i == 0)
+        if (line[j] == DOUBLE_QT && line[j - 1] != BACK_SLASH)
         {
-            print("DUP");
-            token = str_dup("");
+            j++;
+            break;
         }
-        else
-            token = sub_str(input, *i + 1, k - 1);
+        j++;
     }
-    *i = k;
-    return token;
+    token = new_token(sub_str(line, env->input->i, j));
+    env->input->i = j;
+    return (token);
 }
 
-char *get_token(ENV, char *input, int *i)
+t_token    *tokenize_double_quoted(ENV)
 {
-    char    *token;
-    int     start, end;
-    int     k;
+    t_token     *token;
+    size_t      j;
+    char        *line;
 
-    start = *i;
-    k = 0;
-    while (input[k] && input[k] != ' ')
-        k++;
-    if (k - start > 0)
-        token = sub_str(input, start, k);
-    else
-        token = str_dup("");
-    *i += k;
-    return token;
-}
-
-int tokenize(char *input, ENV)
-{
-    int     i;
-    int     len;
-    int     k;
-    char    c;
-    char    *token;
-    t_node  *tokens;
-    
-    //TODO:
-    // Create new token on each different type
-
-    //Check if str is "quoted"!
-
-    
-    // check_quoted_str
-    // is_bad_quoted
-
-    len = str_len(input);
-    int start = 0;
-    int end = 0;
-    
-    i = 0;
-    while (i < len)
+    line = env->input->line;
+    j = env->input->i + 1;
+    while (j < env->input->len)
     {
-        c = input[i];
-        if (input[i] != SPACE)
+        if (line[j] == DOUBLE_QT && line[j - 1] != BACK_SLASH)
         {
-            if (c == DOUBLE_QT || c == SINGLE_QT)
-                token = get_quoted_token(&input[i], &i);
+            j++;
+            break;
+        }
+        j++;
+    }
+    token = new_token(sub_str(line, env->input->i, j));
+    env->input->i = j;
+    return (token);
+    //should be cleaned from backSlashes
+}
+
+t_token *get_token(ENV)
+{
+    t_token *token;
+    size_t  j;
+    char    *line;
+
+    line = env->input->line;
+    j = env->input->i + 1;
+    while (j < env->input->len)
+    {
+        //[ cd d\ ir]
+        if (line[j] == ' ' && line[j - 1] != BACK_SLASH)
+        {
+            //j++;
+            break ;
+        }
+        j++;
+    }
+    token = new_token(sub_str(line, env->input->i, j));
+    env->input->i = j;
+    return token;
+}
+
+int tokenize_input(ENV)
+{
+    t_token *token;
+    char    *line;
+    int     i;
+    int     j;
+
+    //TODO:
+    // -Create new token on each new piece of info
+    // -Check if token is "quoted" && if is_bad_quoted
+    // -Clean quoted token (skipping special chars)
+
+    line = env->input->line;
+    env->input->len = str_len(line);
+    i = 0;
+    while (i < env->input->len)
+    {
+        if (line[i] != SPACE)
+        {
+            env->input->i = i;
+            if (line[i] == DOUBLE_QT || line[i] == SINGLE_QT)
+                token = tokenize_quoted_input(env);
             else
-                token = get_token(env, &input[i], &i);
-            if (token)
-                print(token);
-            else
-                print("NULL");
-            //push_back(&tokens, token);
+                token = get_token(env);
+            i = env->input->i; //Updating index
+            print(token->tok);
+            push_back(&env->tokens, token);
         }
         else
             i++;

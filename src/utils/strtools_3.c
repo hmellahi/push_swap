@@ -29,24 +29,28 @@ char	*str_join(char const *s1, char const *s2)
 	return (s3);
 }
 
-char	*sub_str(char const *s, size_t start, size_t len)
+char	*sub_str(char const *s, int start, int end)
 {
-	char			*sub;
-	unsigned int	sublen;
-	unsigned int	i;
+	char		*sub;
+	size_t		len;
+	size_t		i;
 
 	if (!s)
 		return (NULL);
-	sublen = str_len(s);
-	if (start > sublen)
+	len = str_len(s);
+	if (start > (int)len || end < 0)
 		return (str_dup(""));
-	if (len > sublen)
-		len = sublen;
-	if (!(sub = (char *)malloc((len + 1) * sizeof(char))))
+	start = start < 0 ? 0 : start;
+	end = end >= len ? len : end;
+	if (!(sub = malloc(end - start + 1)))
 		return (NULL);
 	i = 0;
-	while (i < len && s[start])
-		sub[i++] = s[start++];
-	sub[i] = '\0';
+	while (start < end && s[start])
+	{
+		sub[i] = s[start];
+		i++;
+		start++;
+	}
+	sub[start] = '\0';
 	return (sub);
 }

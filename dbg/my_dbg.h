@@ -6,7 +6,7 @@
 
 static size_t  dbg_i = 0;
 
-# define    pass   nothing();
+//# define    PASS   nothing();
 # define    REPi(x) for (int i = 0; i < x; i++)
 # define    REPj(x) for (int j = 0; j < x; j++)
 # define    REPk(x) for (int k = 0; k < x; k++)
