@@ -7,7 +7,7 @@ t_node  *new_node(void *data)
 
     //node = malloc(sizeof(node));
     MALLOC(node);
-    if (NOT node)
+    if (!node)
         return (NULL);
     node->data = data;
     node->next = NULL;
@@ -18,7 +18,6 @@ void    push_back(LIST, void  *data)
 {
     t_node      *iter;
 
-    //new_node if null
     iter = *list;
     while (iter)
         iter = iter->next;

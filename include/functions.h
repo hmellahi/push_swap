@@ -28,11 +28,14 @@ t_array     *new_array(int size);
 t_env       *init_env(int argc, char **argv, char **env_var);
 
 // tokenizer
-int         tokenize_input(ENV);
-t_token     *get_token(ENV);
-t_token     *tokenize_quoted_input(ENV);
-t_token     *tokenize_single_quoted(ENV);
-t_token     *tokenize_double_quoted(ENV);
+int             tokenize_input(ENV);
+t_token         *get_token(ENV);
+t_token         *tokenize_quoted_input(ENV);
+t_token         *tokenize_single_quoted(ENV);
+t_token         *tokenize_double_quoted(ENV);
+t_tokens_node   *new_token_node(t_token **token);
+void            push_back_token(t_tokens_node **list, t_token  **token);
+void            push_front_token(t_tokens_node **list, t_token **token);
 
 // strtools_0
 size_t      str_len(const char *str);
@@ -83,5 +86,6 @@ int         tokenize(char *buff, ENV);
 
 //tmp_utils
 void    print_array(t_array *arr, t_bool minus);
+void    print_tokens(t_tokens_node **tokens);
 
 #endif

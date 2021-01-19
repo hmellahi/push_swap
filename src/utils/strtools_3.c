@@ -90,19 +90,16 @@ char	*sub_str(char const *s, int start, int end)
 	if (!s)
 		return (NULL);
 	len = str_len(s);
-	if (start > (int)len || end < 0)
+	end = end >= len ? len : end;
+	if (start >= end)
 		return (str_dup(""));
 	start = start < 0 ? 0 : start;
-	end = end >= len ? len : end;
-	if (!(sub = malloc(end - start + 1)))
+	len = (end - start);
+	if (!(sub = malloc(len + 1)))
 		return (NULL);
+	sub[len] = '\0';
 	i = 0;
 	while (start < end && s[start])
-	{
-		sub[i] = s[start];
-		i++;
-		start++;
-	}
-	sub[start] = '\0';
+		sub[i++] = s[start++];
 	return (sub);
 }

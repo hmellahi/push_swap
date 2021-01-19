@@ -15,6 +15,7 @@ typedef struct          s_node
     struct s_node       *next;
 }                       t_node;
 
+
 typedef struct          s_btree
 {
     void                *data;
@@ -54,6 +55,14 @@ typedef struct          s_token
     t_bool              quoted;
 }                       t_token;
 
+typedef struct          s_tokens_node
+{
+    t_token             *token;
+    struct 
+    s_tokens_node       *next;
+}                       t_tokens_node;
+
+
 typedef struct          s_input
 {
     char                *line;
@@ -68,7 +77,7 @@ typedef struct          s_env
     char                **argv;
     char                **env_var;
     t_input             *input;
-    t_node              *tokens;
+    t_tokens_node       *tokens;
     
 }                       t_env;
 

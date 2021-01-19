@@ -14,7 +14,7 @@ UTILS			=	tmp_utils.c \
 					#bintree.c
 
 CONSTRUCTORS	=	env.c
-TOKENIZER		=	quotes_checker.c tokenize.c
+TOKENIZER		=	tokens_list.c quotes_checker.c tokenize.c
 LEXER			=	
 PARSER			=	
 EXECUTER		=	

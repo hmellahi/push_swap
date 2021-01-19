@@ -12,6 +12,7 @@ t_token    *tokenize_quoted_input(ENV)
     if (token)
         token->quoted = TRUE;
     return (token);
+    //Should be cleaned from backSlashes
 }
 
 t_token    *tokenize_single_quoted(ENV)
@@ -21,16 +22,13 @@ t_token    *tokenize_single_quoted(ENV)
     char        *line;
 
     line = env->input->line;
-    j = env->input->i + 1;
-    while (j < env->input->len)
-    {
-        if (line[j] == DOUBLE_QT && line[j - 1] != BACK_SLASH)
+    j = env->input->i;
+    while (++j < env->input->len)
+        if (line[j] == SINGLE_QT && line[j - 1] != BACK_SLASH)
         {
             j++;
             break;
         }
-        j++;
-    }
     token = new_token(sub_str(line, env->input->i, j));
     env->input->i = j;
     return (token);
@@ -43,20 +41,16 @@ t_token    *tokenize_double_quoted(ENV)
     char        *line;
 
     line = env->input->line;
-    j = env->input->i + 1;
-    while (j < env->input->len)
-    {
+    j = env->input->i;
+    while (++j < env->input->len)
         if (line[j] == DOUBLE_QT && line[j - 1] != BACK_SLASH)
         {
             j++;
             break;
         }
-        j++;
-    }
     token = new_token(sub_str(line, env->input->i, j));
     env->input->i = j;
     return (token);
-    //should be cleaned from backSlashes
 }
 
 # define ARR_SIZE 256
@@ -111,19 +105,21 @@ int tokenize_input(ENV)
     i = 0;
     while (i < env->input->len)
     {
+        env->input->i = i;
         if (line[i] != SPACE)
         {
-            env->input->i = i;
             if (line[i] == DOUBLE_QT || line[i] == SINGLE_QT)
                 token = tokenize_quoted_input(env);
             else
                 token = get_token(env);
             i = env->input->i; //Updating index
+            
             print(token->tok);
-            push_back(&env->tokens, token);
+            push_back_token(&env->tokens, &token);
         }
         else
             i++;
     }
+    //print_tokens(&env->tokens);
     return 0;
 }
