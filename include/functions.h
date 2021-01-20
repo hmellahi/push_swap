@@ -33,9 +33,6 @@ t_token         *get_token(ENV);
 t_token         *tokenize_quoted_input(ENV);
 t_token         *tokenize_single_quoted(ENV);
 t_token         *tokenize_double_quoted(ENV);
-t_tokens_node   *new_token_node(t_token **token);
-void            push_back_token(t_tokens_node **list, t_token  **token);
-void            push_front_token(t_tokens_node **list, t_token **token);
 
 // strtools_0
 size_t      str_len(const char *str);
@@ -70,9 +67,9 @@ t_bool      is_bad_quoted(char *str);
 int         get_line(int fd, char **line);
 
 // Linked list functions
-t_node      *new_node(void *data);
-void        push_back(LIST, void  *data);
-void        push_front(LIST, void  *data);
+t_node      *new_node(void **data);
+void        push_back(LIST, void  **data);
+void        push_front(LIST, void  **data);
 size_t      list_size(t_node    *list);
 void        list_iter(LIST, void(*fun)(void **));
 void        safe_free(void **p);
@@ -86,6 +83,6 @@ int         tokenize(char *buff, ENV);
 
 //tmp_utils
 void    print_array(t_array *arr, t_bool minus);
-void    print_tokens(t_tokens_node **tokens);
+void    print_tokens(t_node **tokens);
 
 #endif

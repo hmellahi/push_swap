@@ -1,6 +1,7 @@
 
 #ifndef MACROS_H
 # define MACROS_H
+#include "minishell.h"
 
 # define SHELL_NAME "minishell"
 
@@ -33,7 +34,6 @@
 # ifndef OPEN_MAX
 #  define OPEN_MAX 4096
 # endif
-
 
 // 42 norminette: parameterized macros are forbidden
 

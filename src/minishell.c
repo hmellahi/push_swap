@@ -47,7 +47,7 @@ int shell_prompt(t_env *env)
         return (-1);
     else if (line_isempty(env->input->line))
         return (0); //FLUSH?;
-    print(env->input->line);
+    //print(env->input->line);
     ret = tokenize_input(env);
     //ret = lex_tokens();
     //ret = parse_tokens();
@@ -65,7 +65,6 @@ int main(int argc, char **argv, char **env_vars)
     // return 0;
 
     env = init_env(argc, argv, env_vars);
-
     i = 0;
     while (1)
     {

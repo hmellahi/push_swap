@@ -14,7 +14,7 @@ UTILS			=	tmp_utils.c \
 					#bintree.c
 
 CONSTRUCTORS	=	env.c
-TOKENIZER		=	tokens_list.c quotes_checker.c tokenize.c
+TOKENIZER		= quotes_checker.c tokenize.c
 LEXER			=	
 PARSER			=	
 EXECUTER		=	
@@ -35,11 +35,11 @@ OBJ				=	minishell.o\
 					$(CONSTRUCTORS:.c=.o)
 
 ## For debuging:
-DBG_FLAGS		=  -I dbg -g 
+DBG_FLAGS		=  -I dbg
 
 ###################
 
-COMPILE	= $(CC) -I include -c $(SRC) #$(DBG_FLAGS)
+COMPILE	= $(CC) -I include -c $(SRC) -g #$(DBG_FLAGS)
 LINK = $(CC) $(OBJ) -o $(NAME)  #$(DBG_FLAGS)
 
 all: $(NAME)

@@ -80,9 +80,6 @@ t_token *get_token(ENV)
             break ;
         j++;
     }
-    // print("SKIPED");
-    // print_array(skip, TRUE);
-    // print("#########");
     token = new_token(clean_sub_str(line, env->input->i, j, skip));
     env->input->i = j;
     return token;
@@ -114,8 +111,9 @@ int tokenize_input(ENV)
                 token = get_token(env);
             i = env->input->i; //Updating index
             
-            print(token->tok);
-            push_back_token(&env->tokens, &token);
+            printf("->[%s]\n", token->tok);
+
+            //push_back(&env->tokens, (void**)&token);
         }
         else
             i++;

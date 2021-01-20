@@ -1,20 +1,19 @@
 
 #include "minishell.h"
 
-t_node  *new_node(void *data)
+t_node  *new_node(void **data)
 {
     t_node *node;
 
-    //node = malloc(sizeof(node));
     MALLOC(node);
     if (!node)
         return (NULL);
-    node->data = data;
+    node->data = *data;
     node->next = NULL;
     return (node);
 }
 
-void    push_back(LIST, void  *data)
+void    push_back(LIST, void  **data)
 {
     t_node      *iter;
 
@@ -26,7 +25,7 @@ void    push_back(LIST, void  *data)
         return ;
 }
 
-void    push_front(LIST, void  *data)
+void    push_front(LIST, void **data)
 {
     t_node      *new;
 
@@ -34,7 +33,7 @@ void    push_front(LIST, void  *data)
         *list = new_node(data);
     else
     {
-        new = new_node(data);
+        new = new_node(*data);
         if (NOT new)
             return ;
         new->next = *list;

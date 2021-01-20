@@ -1,6 +1,5 @@
 
-
-#include "minishell.h"
+#include "../../include/minishell.h"
 
 
 void    print_array(t_array *arr, t_bool minus)
@@ -13,17 +12,24 @@ void    print_array(t_array *arr, t_bool minus)
             DN(arr->arr[i]);
 }
 
-void    print_tokens(t_tokens_node **tokens)
+void    print_tokens(t_node **tokens)
 {
-    t_tokens_node *iter;
+    t_node *iter;
 
-    nl sp
     iter = *tokens;
-
     while (iter)
     {
-        yo;
-        print (iter->token->tok);
+        if (iter->data == NULL)
+        {
+            print("<NULL>");
+            break;
+        }
+        t_token *token = iter->data;
+
+        if (token)
+            printf("@> [%s]\n", (char*)(token->tok));
+        else
+            printf("$$$$$$$$$$$$$\n");
         iter = iter->next;
     }
     sp
