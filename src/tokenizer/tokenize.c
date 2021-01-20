@@ -96,7 +96,8 @@ int tokenize_input(ENV)
     // -Create new token on each new piece of info
     // -Check if token is "quoted" && if is_bad_quoted
     // -Clean quoted token (skipping special chars)
-
+    
+    env->tokens = NULL; // 
     line = env->input->line;
     env->input->len = str_len(line);
     i = 0;
@@ -110,14 +111,16 @@ int tokenize_input(ENV)
             else
                 token = get_token(env);
             i = env->input->i; //Updating index
-            
-            printf("->[%s]\n", token->tok);
 
-            //push_back(&env->tokens, (void**)&token);
+
+            // env->tokens = push_back(&env->tokens, (void**)&token); //t_token*
+            push_back(&env->tokens, (void*)token); //t_token*
+
+
         }
         else
             i++;
     }
-    //print_tokens(&env->tokens);
+    print_tokens(&env->tokens);
     return 0;
 }

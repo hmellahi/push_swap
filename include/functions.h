@@ -67,9 +67,11 @@ t_bool      is_bad_quoted(char *str);
 int         get_line(int fd, char **line);
 
 // Linked list functions
-t_node      *new_node(void **data);
-void        push_back(LIST, void  **data);
-void        push_front(LIST, void  **data);
+t_node      *new_node(void *data);
+
+void        push_back(LIST, void  *data);
+t_node      *push_front(LIST, void  **data);
+
 size_t      list_size(t_node    *list);
 void        list_iter(LIST, void(*fun)(void **));
 void        safe_free(void **p);
