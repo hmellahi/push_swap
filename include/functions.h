@@ -22,17 +22,21 @@
 int         shell_prompt(ENV);
 int         read_input(char **input);
 
-// constructos
+// Constructos
 t_token     *new_token(void *tok);
 t_array     *new_array(int size);
 t_env       *init_env(int argc, char **argv, char **env_var);
 
-// tokenizer
+// Tokenizer
 int             tokenize_input(ENV);
 t_token         *get_token(ENV);
 t_token         *tokenize_quoted_input(ENV);
 t_token         *tokenize_single_quoted(ENV);
 t_token         *tokenize_double_quoted(ENV);
+
+// Lexer
+int             lex_tokens(ENV);
+
 
 // strtools_0
 size_t      str_len(const char *str);
@@ -82,6 +86,8 @@ void        delete_lst(LIST);
 //Parsing 
 t_bool      split_by_type(char *buff, t_node **tokens);
 int         tokenize(char *buff, ENV);
+
+
 
 //tmp_utils
 void    print_array(t_array *arr, t_bool minus);

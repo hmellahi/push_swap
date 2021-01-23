@@ -7,9 +7,9 @@ t_env   *init_env(int argc, char **argv, char **env_var)
     t_env   *env;
 
     MALLOC(env);
-    MALLOC(env->input);
+    MALLOC(env->input);    
+    
     env->tokens = NULL;
-    //env->tokens = malloc(sizeof(t_node));
     return (env);
 }
 
@@ -22,10 +22,6 @@ t_token *new_token(void *tok)
         token->tok = tok;
     return (token);
 }
-
-#define INT_ARR sizeof(int)
-#define CHAR_ARR sizeof(char)
-#define SHORT_ARR sizeof(short)
 
 t_array *new_array(int size)
 {

@@ -49,7 +49,7 @@ int shell_prompt(t_env *env)
         return (0); //FLUSH?;
     //print(env->input->line);
     ret = tokenize_input(env);
-    //ret = lex_tokens();
+    ret = lex_tokens(env);
     //ret = parse_tokens();
     //ret = execute();
     return (0);
@@ -58,20 +58,14 @@ int shell_prompt(t_env *env)
 int main(int argc, char **argv, char **env_vars)
 {
     t_env   *env;
-    char    *shell_ret;
     int     i;
-
-    // print(sub_str("0123456789abcdef", -2, 10));
-    // return 0;
 
     env = init_env(argc, argv, env_vars);
     i = 0;
     while (1)
-    {
-        //printf("[%d]\n", i++);
         if (shell_prompt(env))
             break;
-    }
+    
     //Free allocated mem
     return (0);
 }

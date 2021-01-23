@@ -34,15 +34,9 @@ typedef struct			s_token
 	char				*tok; //"cd" ";"
 	char				*type; //CMD, ARG, SEP,  "PIPE"
 	size_t				*len;
-	int					*order;
-	t_bool				quoted;
+	int					order;
+	t_bool				quoted; 
 }						t_token;
-
-typedef struct			s_tokens_node
-{
-	t_token				*token;
-	struct s_tokens_node*next;
-}						t_tokens_node;
 
 typedef struct			s_input
 {
@@ -58,6 +52,8 @@ typedef struct			s_env
 	char				**env_var;
 	t_input				*input;
 	t_node              *tokens;
+	t_node              *commands;
+	//char				**builtins;
 }						t_env;
 
 #endif

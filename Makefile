@@ -14,8 +14,8 @@ UTILS			=	tmp_utils.c \
 					#bintree.c
 
 CONSTRUCTORS	=	env.c
-TOKENIZER		= quotes_checker.c tokenize.c
-LEXER			=	
+TOKENIZER		=	quotes_checker.c tokenize.c
+LEXER			=	lexer.c
 PARSER			=	
 EXECUTER		=	
 
@@ -24,12 +24,14 @@ DBG				=	MY_DBG.C
 
 SRC				=	src/minishell.c\
 					$(TOKENIZER:%.c=./src/tokenizer/%.c)\
+					$(LEXER:%.c=./src/lexer/%.c)\
 					$(PARSER:%.c=./src/parser/%.c)\
 					$(UTILS:%.c=./src/utils/%.c)\
 					$(CONSTRUCTORS:%.c=./src/constructors/%.c)
 
 OBJ				=	minishell.o\
 					$(TOKENIZER:.c=.o)\
+					$(LEXER:.c=.o)\
 					$(PARSER:.c=.o)\
 					$(UTILS:.c=.o)\
 					$(CONSTRUCTORS:.c=.o)
