@@ -11,7 +11,7 @@ static size_t  dbg_i = 0;
 # define    REPj(x) for (int j = 0; j < x; j++)
 # define    REPk(x) for (int k = 0; k < x; k++)
 
-#define     print(s) printf("[%s]\n", s)
+#define     print(s) printf("[%s]\n", s);
 
 # define    PNT(p) printf("(%f, %f)\n", (float)p->x, (float)p->y)
 # define    DN(x) printf("{%f}\n", (double)x)
@@ -23,7 +23,7 @@ static size_t  dbg_i = 0;
 
 # define    DSN(s, n) printf("{%s: %f}\n", s, (double)n)
 # define    msg(s) printf("[ %s ]\n", s)
-# define    count(s) printf("[ %s ] [ %zu ]\n", s, dbg_i++)
+# define    count(s) printf("[ %s ] [ %zu ]\n", s, dbg_i++);
 
 # define    yo DS("{*YO*}");
 # define    hi DS("{*HI*}");

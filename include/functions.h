@@ -19,24 +19,27 @@
 */
 
 // main
-int         shell_prompt(ENV);
+int         repl(ENV);
 int         read_input(char **input);
 
 // Constructos
-t_token     *new_token(void *tok);
-t_array     *new_array(int size);
-t_env       *init_env(int argc, char **argv, char **env_var);
+t_token         *new_token(void *tok);
+t_array         *new_array(int size);
+t_env           *init_env(int argc, char **argv, char **env_var);
 
 // Tokenizer
-int             tokenize_input(ENV);
+t_bool          tokenize_input(ENV);
 t_token         *get_token(ENV);
 t_token         *tokenize_quoted_input(ENV);
 t_token         *tokenize_single_quoted(ENV);
 t_token         *tokenize_double_quoted(ENV);
 
+// Commands
+t_bool          split_commands(ENV);
+t_cmd           *new_cmd(void);
+
 // Lexer
 int             lex_tokens(ENV);
-
 
 // strtools_0
 size_t      str_len(const char *str);

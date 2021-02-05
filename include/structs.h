@@ -32,11 +32,25 @@ typedef struct			s_array
 typedef struct			s_token
 {
 	char				*tok; //"cd" ";"
-	char				*type; //CMD, ARG, SEP,  "PIPE"
+	char				*type; //BUILTIN, ARG, SEP,  "PIPE"
 	size_t				*len;
-	int					order;
+	int					order; //...??
 	t_bool				quoted; 
 }						t_token;
+
+/*
+** -tokens:	list of command tokens ["ls", "-la", "file"]
+** -
+** -ret		return value of the command,
+**			if ret == ZERO AND sep == "&&" then stop executing.
+*/
+
+typedef struct			s_cmd
+{
+	t_node				*tokens;
+	t_bool				ret;
+	t_bool				sep;
+}						t_cmd;
 
 typedef struct			s_input
 {

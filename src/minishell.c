@@ -25,20 +25,13 @@ int read_input(char **input)
     return (0);
 }
 
-int shell_prompt(t_env *env)
+//This is the shell loop.
+//repl => Read-Eval-Print-Loop
+int repl(t_env *env)
 {
     int     ret; 
     char    *input;
     size_t  len;
-
-/*
-    TODO:
-        +wait for input
-        +tokenize input
-        -run lexer
-        -parse
-        -execute
-*/
 
     put_str(SHELL_NAME);
     put_str("$ ");
@@ -46,10 +39,17 @@ int shell_prompt(t_env *env)
     if (read_input(&env->input->line) == -1)
         return (-1);
     else if (line_isempty(env->input->line))
-        return (0); //FLUSH?;
+        return (0);
+
     //print(env->input->line);
-    ret = tokenize_input(env);
-    ret = lex_tokens(env);
+
+    /* TODO:
+        -> Split commands then tokenize.
+    */
+
+    // ret = split_commands(env);
+    ret = tokenize_input(env); // ""
+    // ret = lex_tokens(env);
     //ret = parse_tokens();
     //ret = execute();
     return (0);
@@ -63,7 +63,7 @@ int main(int argc, char **argv, char **env_vars)
     env = init_env(argc, argv, env_vars);
     i = 0;
     while (1)
-        if (shell_prompt(env))
+        if (repl(env))
             break;
     
     //Free allocated mem

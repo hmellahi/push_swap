@@ -85,7 +85,7 @@ t_token *get_token(ENV)
     return token;
 }
 
-int tokenize_input(ENV)
+t_bool tokenize_input(ENV)
 {
     t_token *token;
     char    *line;
