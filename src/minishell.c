@@ -47,6 +47,8 @@ int repl(t_env *env)
         -> Split commands then tokenize.
     */
 
+    env->input->len = str_len(env->input->line);
+
     // ret = split_commands(env);
     ret = tokenize_input(env); // ""
     // ret = lex_tokens(env);

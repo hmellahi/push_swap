@@ -36,7 +36,7 @@ t_token         *tokenize_double_quoted(ENV);
 
 // Commands
 t_bool          split_commands(ENV);
-t_cmd           *new_cmd(void);
+t_command       *new_cmd(void);
 
 // Lexer
 int             lex_tokens(ENV);

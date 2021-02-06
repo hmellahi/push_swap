@@ -45,12 +45,13 @@ typedef struct			s_token
 **			if ret == ZERO AND sep == "&&" then stop executing.
 */
 
-typedef struct			s_cmd
+typedef struct			s_command
 {
+	char				*cmd;
 	t_node				*tokens;
 	t_bool				ret;
 	t_bool				sep;
-}						t_cmd;
+}						t_command;
 
 typedef struct			s_input
 {

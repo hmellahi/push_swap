@@ -24,9 +24,9 @@ t_token *new_token(void *tok)
     return (token);
 }
 
-t_cmd *new_cmd(void)
+t_command *new_cmd(void)
 {
-    t_cmd *cmd;
+    t_command *cmd;
 
     cmd = malloc(sizeof(cmd));
     if (!cmd)

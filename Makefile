@@ -19,7 +19,6 @@ LEXER			=	lexer.c
 PARSER			=	
 EXECUTER		=	
 
-
 DBG				=	MY_DBG.C
 
 SRC				=	src/minishell.c\
