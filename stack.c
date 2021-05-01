@@ -89,18 +89,19 @@ void display(t_stack *pt)
 int is_sorted(t_stack *pt)
 {
     int i;
-    int last;
+    int min;
     t_node *curr;
     t_node *head;
 
     i = -1;
-    last = -1;
+    min = -1;
     head = (t_node *)pt->head;
     curr = head;
     while (1)
     {
-        if (*((int *)curr->data) > last)
+        if (void_to_num(curr->data) < min)
             return (FALSE);
+        min = void_to_num(curr->data);
         curr = curr->next;
         if (curr == head)
             break;

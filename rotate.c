@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 18:39:42 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/04/30 22:38:00 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/01 16:23:32 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int    rotate(t_stack *stack)
     if (stack->size < 2)
         return (FALSE);
     RightshiftList((t_node **)&stack->head);
+    if (CHECKER)
+        return (TRUE);
     ft_putstr("r");
     ft_putchar(stack->name);
     ft_putstr("\n");
@@ -28,6 +30,8 @@ int    rev_rotate(t_stack *stack)
     if (stack->size < 2)
         return (FALSE);
     LeftshiftList((t_node **)&stack->head);
+    if (CHECKER)
+        return (TRUE);
     ft_putstr("rr");
     ft_putchar(stack->name);
     ft_putstr("\n");
@@ -43,7 +47,6 @@ int    rotate_a(t_stack *fs, t_stack *ss)
 int    rotate_b(t_stack *fs, t_stack *ss)
 {
     //push(ss->actions, "rb");
-    ft_putstr("rb\n");
     return (rotate(ss));
 }
 

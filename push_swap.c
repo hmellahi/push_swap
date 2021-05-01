@@ -1,84 +1,4 @@
 #include "checker.h"
-
-int is_digit(char c)
-{
-    return (c >= '0' && c <= '9');
-}
-
-t_string inst_list[11] = {
-    "sa",
-    "sb",
-    "ss",
-    "pa",
-    "pb",
-    "ra",
-    "rb",
-    "rr",
-    "rra",
-    "rrb",
-    "rrr"};
-
-void insertionSort(int arr[], int n)
-{
-    int i, key, j;
-
-    i = -1;
-    while (++i < n)
-    {
-        key = arr[i];
-        j = i - 1;
-        while (j >= 0 && arr[j] > key)
-        {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
-    }
-}
-
-int (*run_inst(int index))(t_stack *fs, t_stack *ss)
-{
-    int (*funcs[12])(t_stack * fs, t_stack * ss);
-
-    funcs[0] = swap_list_a;
-    funcs[1] = swap_list_b;
-    funcs[2] = swap_both;
-    funcs[3] = push_in_a;
-    funcs[4] = push_in_b;
-    funcs[5] = rotate_a;
-    funcs[6] = rotate_b;
-    funcs[7] = rotate_both;
-    funcs[8] = rev_rotate_a;
-    funcs[9] = rev_rotate_b;
-    funcs[10] = rev_rotate_both;
-    funcs[11] = NULL;
-    return funcs[index];
-}
-
-
-int ft_exit(int status)
-{
-    if (status == ERROR)
-        ft_putstr("Error\n");
-    // free garbage [TODO]
-    exit(status);
-}
-
-int exect_inst(t_stack *fs, t_stack *ss, t_string inst)
-{
-    int index;
-
-    index = -1;
-    while (++index < 11)
-        if (strcmp(inst_list[index], inst) == 0)
-        {
-            (run_inst(index))(fs, ss);
-            return (TRUE);
-        }
-    ft_exit(ERROR);
-    return (FALSE);
-}
-
 void repeat_n_times(int (*func)(), t_stack *a, int n)
 {
     while (n--)
@@ -101,7 +21,7 @@ int main(int ac, char **av)
     int i;
     int j;
     int x;
-    int *k;
+    long *k;
     t_stack *list_a;
     t_stack *list_b;
 
@@ -120,15 +40,16 @@ int main(int ac, char **av)
             if (!is_digit(x))
                 return (ft_exit(ERROR));
         }
-        k = malloc(sizeof(int));
-        *k = atoi(av[i]);
+        k = malloc(sizeof(long));
+        *k = ft_atoi(av[i]);
+        //printf("%ld\n", *k);
         if (!is_unique(list_a, k))
             return (ft_exit(ERROR));
         push(list_a, k);
     }
     int chunk_index = 0;
     int half = list_a->size / 2;
-    int chunk_size = list_a->size / 4;
+    int chunk_size = list_a->size / 20;
     int index,min1,min2, hold_first, hold_sec;
     int hold_first_index = 9999;
     int hold_sec_index = 9999;
@@ -181,18 +102,8 @@ int main(int ac, char **av)
         if (!is_empty(list_a) && is_equal(sorted_list, list_a) == TRUE)
             return (ft_exit(COMPLETED));
         push_in_b(list_a, list_b);
-        //display(list_a);
-        //printf("moved to top : %d\n", abs(min1) > abs(min2)? hold_sec_index: hold_first_index);
         chunk_index++;
     }
-    puts("b : after");
-    display(list_a);
-    display(list_b);
-    //free_stack(list_b);
-    //free_stack(sorted_list);
-    //freeList(&list_a->head);
-    // puts("b : after");
-    // //display(list_b);
     int max;
     t_node *curr;
     int moves;
@@ -219,9 +130,4 @@ int main(int ac, char **av)
                 break;
         }
     }
-    display(list_a);
-    //puts("a : after");
-    //display(list_a);
-    //puts("b : after");
-    //display(list_b);
 }
