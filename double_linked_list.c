@@ -124,3 +124,17 @@ t_node *get(t_stack *pt, int index)
       curr = curr->next;
    return (curr);
 }
+
+void  freeList(t_node **head)
+{
+   t_node *curr;
+   t_node *tmp;
+
+   curr = *head;
+   while (curr->next != *head)
+   {
+      tmp = curr->next;
+      free(curr);
+      curr = tmp;
+   }
+}

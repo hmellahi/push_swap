@@ -1,6 +1,6 @@
 #include "checker.h"
 
-t_stack *newStack()
+t_stack *newStack(char name)
 {
     t_stack *pt;
 
@@ -8,7 +8,14 @@ t_stack *newStack()
     pt->size = 0;
     pt->head = NULL;
     pt->type = INT;
+    pt->name = name;
     return (pt);
+}
+
+void    free_stack(t_stack *pt)
+{
+    freeList(&pt->head);
+    free(pt);
 }
 
 t_stack *cpy(t_stack *old)
@@ -16,7 +23,7 @@ t_stack *cpy(t_stack *old)
     t_stack *new;
     t_node *curr;
 
-    new = newStack();
+    new = newStack(old->name);
     curr = old->head;
     while(1)
     {

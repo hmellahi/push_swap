@@ -55,6 +55,15 @@ int (*run_inst(int index))(t_stack *fs, t_stack *ss)
     return funcs[index];
 }
 
+
+int ft_exit(int status)
+{
+    if (status == ERROR)
+        ft_putstr("Error\n");
+    // free garbage [TODO]
+    exit(status);
+}
+
 int exect_inst(t_stack *fs, t_stack *ss, t_string inst)
 {
     int index;
@@ -66,7 +75,7 @@ int exect_inst(t_stack *fs, t_stack *ss, t_string inst)
             (run_inst(index))(fs, ss);
             return (TRUE);
         }
-    printf("Error\n");
+    ft_exit(ERROR);
     return (FALSE);
 }
 
@@ -87,14 +96,6 @@ void move_to_top(t_stack *a,int index)
         repeat_n_times(rev_rotate, a, -moves);
 }
 
-int ft_exit(int status)
-{
-    if (status == ERROR)
-        ft_putstr("Error\n");
-    // free garbage [TODO]
-    exit(status);
-}
-
 int main(int ac, char **av)
 {
     int i;
@@ -104,8 +105,8 @@ int main(int ac, char **av)
     t_stack *list_a;
     t_stack *list_b;
 
-    list_a = newStack();
-    list_b = newStack();
+    list_a = newStack('a');
+    list_b = newStack('b');
     i = 0;
     ac--;
     if (ac == 0)
@@ -127,13 +128,14 @@ int main(int ac, char **av)
     }
     int chunk_index = 0;
     int half = list_a->size / 2;
-    int chunk_size = list_a->size / 4 ;
+    int chunk_size = list_a->size / 4;
     int index,min1,min2, hold_first, hold_sec;
     int hold_first_index = 9999;
     int hold_sec_index = 9999;
     t_stack *sorted_list = cpy(list_a);
     bubbleSort(&sorted_list->head);
-    display(sorted_list);
+    if (is_equal(sorted_list, list_a) == TRUE)
+        return (ft_exit(COMPLETED));
     while (!is_empty(list_a))
     {
         int max_of_cc = void_to_num(get(sorted_list, chunk_index * chunk_size)->data);
@@ -162,14 +164,14 @@ int main(int ac, char **av)
         }
         if (hold_first_index != 9999)
         {
-            if (hold_first_index > half)
+            if (hold_first_index >= half)
                 min1 = hold_first_index - list_a->size;
             else
                 min1 = hold_first_index;
         }
         if (hold_sec_index != 9999)
         {
-            if (hold_sec_index > half)
+            if (hold_sec_index >= half)
                 min2 = hold_sec_index - list_a->size;
             else
                 min2 = hold_sec_index;
@@ -183,31 +185,41 @@ int main(int ac, char **av)
         //printf("moved to top : %d\n", abs(min1) > abs(min2)? hold_sec_index: hold_first_index);
         chunk_index++;
     }
-    // puts("a : after");
-    // //display(list_a);
+    puts("b : after");
+    display(list_a);
+    display(list_b);
+    //free_stack(list_b);
+    //free_stack(sorted_list);
+    //freeList(&list_a->head);
     // puts("b : after");
     // //display(list_b);
-    // int max;
-    // t_node *curr;
-    // curr = list_b->head;
-    // while (!is_empty(list_b))
-    // {
-    //     i = 0;
-    //     max = void_to_num(get(sorted_list, ac - 1)->data);
-    //     while (1)
-    //     {
-    //         if (void_to_num(curr->data) == max)
-    //         {
-    //             move_to_top(list_b, (ac /2) - i);
-    //             push_in_a(list_a, list_b);
-    //             break;
-    //         }
-    //         curr = curr->next;
-    //         i++;
-    //         if (curr == list_b->head)
-    //             break;
-    //     }
-    // }
+    int max;
+    t_node *curr;
+    int moves;
+    curr = list_b->head;
+    while (!is_empty(list_b))
+    {
+        i = 0;
+        max = void_to_num(get(sorted_list, sorted_list->size - i)->data);
+        while (1)
+        {
+            if (void_to_num(curr->data) == max)
+            {
+                if (i >= list_b->size / 2)
+                    moves = list_b->size - i;
+                else
+                    moves = i;
+                move_to_top(list_b, moves);
+                push_in_a(list_a, list_b);
+                break;
+            }
+            curr = curr->next;
+            i++;
+            if (curr == list_b->head)
+                break;
+        }
+    }
+    display(list_a);
     //puts("a : after");
     //display(list_a);
     //puts("b : after");

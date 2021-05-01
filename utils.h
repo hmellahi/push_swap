@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 18:37:17 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/04/28 16:21:01 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/04/30 22:38:30 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int    rev_rotate_b(t_stack *fs, t_stack *ss);
 int    rev_rotate_a(t_stack *fs, t_stack *ss);
 int    rotate_both(t_stack *fs, t_stack *ss);
 int     void_to_num(void* x);
-
+void	ft_putchar(char const s);
 int	ft_strcmp(char *s1, const char *s2);
 void	ft_putnbr(int nb);
 void	ft_putstr(char const *s);
