@@ -41,7 +41,6 @@ void insertLast(t_node **head, void *data)
    t_node *link;
 
    link = (t_node *)malloc(sizeof(t_node));
-   //int i = void_to_num(data);
    link->data = data;
    link->prev = link;
    link->next = link;
@@ -134,6 +133,7 @@ void  freeList(t_node **head)
    while (curr->next != *head)
    {
       tmp = curr->next;
+      free(curr->data);
       free(curr);
       curr = tmp;
    }

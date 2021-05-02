@@ -48,3 +48,12 @@ char		*join(char const *s1, char const *s2)
 	s12[i] = 0;
 	return (s12);
 }
+
+// void	sf_malloc(int bytes)
+// {
+// 	void*		ptr;
+// 	static int	i;
+
+// 	ptr = malloc(bytes);
+// 	adresses[i] = ptr;
+// }
