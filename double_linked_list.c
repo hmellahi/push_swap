@@ -55,6 +55,26 @@ void insertLast(t_node **head, void *data)
    }
 }
 
+void insertFirst(t_node **head, void *data)
+{
+   t_node *link;
+
+   link = (t_node *)malloc(sizeof(t_node));
+   link->data = data;
+   link->prev = link;
+   link->next = link;
+   if (*head == NULL)
+      *head = link;
+   else
+   {
+      link->prev = (*head)->prev;
+      link->next = *head;
+      link->prev->next = link;
+      (*head)->prev = link;
+      *head = link;
+   }
+}
+
 t_node *deleteFirst(t_node **head)
 {
    t_node *temp;
@@ -68,6 +88,21 @@ t_node *deleteFirst(t_node **head)
    (*head)->next->prev = (*head)->prev;
    (*head)->prev->next = (*head)->next;
    (*head) = (*head)->next;
+   return (temp);
+}
+
+t_node *deleteLast(t_node **head)
+{
+   t_node *temp;
+
+   temp = *head;
+   if ((*head)->next == (*head))
+   {
+      (*head) = NULL;
+      return NULL;
+   }
+   (*head)->next->prev = (*head)->prev;
+   (*head)->prev->next = (*head)->next;
    return (temp);
 }
 

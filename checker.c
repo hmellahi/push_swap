@@ -37,9 +37,16 @@ int main(int ac, char **av)
     while (nbytes)
     {
         nbytes = read_line(0, &inst);
-        if (!exect_inst(list_a, list_b, inst))
+        //puts(inst);
+        if (!nbytes && ft_strlen(inst) == 0)
             break;
-        free(inst);
+        exect_inst(list_a, list_b, inst);
+        puts(ins)
+        puts("a");
+        display(list_a);
+        puts("b");
+        display(list_b);
+       // free(inst);
     }
     // free(inst);
     //display(list_a);
@@ -47,8 +54,8 @@ int main(int ac, char **av)
         ft_putstr("OK\n");
     else
         ft_putstr("KO\n");
-    free_stack(list_a);
-    free_stack(list_b);
+    //free_stack(list_a);
+    //free_stack(list_b);
     return (0);
 }
 

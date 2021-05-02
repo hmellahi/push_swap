@@ -23,5 +23,6 @@ void FrontBackSplit(t_node* source,
 t_node** frontRef, t_node** backRef);
 t_node* deleteFirst(t_node **head);
 void merge_sort(t_node** headRef);
+t_node *deleteLast(t_node **head);
 void bubbleSort(t_node **headRef);
 #endif
