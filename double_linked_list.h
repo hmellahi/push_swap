@@ -16,7 +16,7 @@ void insertLast(t_node **head,void* data);
 void RightshiftList(t_node **head);
 void  LeftshiftList(t_node **head);
 void  freeList(t_node **head);
-void insertFirst(t_node *head,t_node *last, void* data);
+void insertFirst(t_node **head, void *data);
 void display_list(t_node *head, int type);
 t_node* SortedMerge(t_node* a, t_node* b);
 void FrontBackSplit(t_node* source,

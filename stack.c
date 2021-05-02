@@ -60,6 +60,12 @@ void push(t_stack *pt, void *x)
     pt->size++;
 }
 
+void push2(t_stack *pt, void *x)
+{
+    insertFirst(&pt->head, x);
+    pt->size++;
+}
+
 int peek(t_stack *pt)
 {
     t_node *fs_node;

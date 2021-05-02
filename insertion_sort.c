@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   insertion_sort.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/02 16:51:48 by hmellahi          #+#    #+#             */
+/*   Updated: 2021/05/02 16:52:12 by hmellahi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
- 
- 
-void bubbleSort(t_node **headRef)
+
+void    bubbleSort(t_node **headRef)
 {
     t_node *itr;
     t_node *itr2;

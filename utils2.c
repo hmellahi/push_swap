@@ -9,7 +9,6 @@ int ft_exit(int status)
 {
     if (status == ERROR)
         ft_putstr("Error\n");
-    // free garbage [TODO]
     exit(status);
 }
 
@@ -23,17 +22,17 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int neg;
-	int i;
-	long num;
+	int		neg;
+	int		i;
+	long	num;
 
 	i = 0;
 	neg = 1;
 	num = 0;
 	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-			|| str[i] == '\f' || str[i] == '\r')
+		|| str[i] == '\f' || str[i] == '\r')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -44,7 +43,7 @@ int		ft_atoi(const char *str)
 	while (str[i] >= 48 && str[i] <= 57)
 	{
         if (num >= 2147483647)
-            return (-1);
+            return	(-1);
 		num = num * 10 + (str[i] - 48);
 		i++;
 	}

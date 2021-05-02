@@ -26,4 +26,5 @@ t_node      *get(t_stack *pt, int index);
 t_stack     *cpy(t_stack *old);
 int         is_equal(t_stack *a, t_stack *b);
 void    free_stack(t_stack *pt);
+void push2(t_stack *pt, void *x);
 #endif
