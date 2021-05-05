@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 00:59:09 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/05 00:08:26 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/05 16:09:40 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void repeat_n_times(int (*func)(), t_stack *a, int n)
 {
+    // if (n > 100)
+    //     return ;
     while (n-- > 0)
         func(a);
 }

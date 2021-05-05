@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:36:34 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/04 06:36:47 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/05 15:42:58 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int peek(t_stack *pt)
 {
     t_node *fs_node;
 
+    if (pt->size == 0)
+        return (-1);
     fs_node = pt->head;
     return (void_to_num(fs_node->data));
 }
@@ -30,9 +32,11 @@ int pop(t_stack *pt)
     deleteFirst(&pt->head);
     return (first_num);
 }
-
+#define DEBUG 0
 void display(t_stack *pt)
 {
+    if (!DEBUG)
+        return;
     if (pt->size == 0)
         return;
     display_list(pt->head, pt->type);
