@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 06:31:55 by hamza             #+#    #+#             */
+/*   Updated: 2021/05/04 06:37:34 by hamza            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 t_stack *newStack(char name)
@@ -10,12 +22,6 @@ t_stack *newStack(char name)
     pt->type = INT;
     pt->name = name;
     return (pt);
-}
-
-void    free_stack(t_stack *pt)
-{
-    freeList(&pt->head);
-    free(pt);
 }
 
 t_stack *cpy(t_stack *old)
@@ -64,58 +70,4 @@ void push2(t_stack *pt, void *x)
 {
     insertFirst(&pt->head, x);
     pt->size++;
-}
-
-int peek(t_stack *pt)
-{
-    t_node *fs_node;
-
-    fs_node = pt->head;
-    return (void_to_num(fs_node->data));
-}
-
-int pop(t_stack *pt)
-{
-    int first_num;
-
-    if (pt->size == 0)
-        return (-1);
-    first_num = peek(pt);
-    deleteFirst(&pt->head);
-    return (first_num);
-}
-
-void display(t_stack *pt)
-{
-    if (pt->size == 0)
-        return;
-    display_list(pt->head, pt->type);
-}
-
-int is_sorted(t_stack *pt)
-{
-    int i;
-    int min;
-    t_node *curr;
-    t_node *head;
-
-    i = -1;
-    min = -1;
-    head = (t_node *)pt->head;
-    curr = head;
-    while (1)
-    {
-        if (void_to_num(curr->data) < min)
-            return (FALSE);
-        min = void_to_num(curr->data);
-        curr = curr->next;
-        if (curr == head)
-            break;
-    }
-    return (TRUE);
-}
-
-int is_empty(t_stack *pt)
-{
-    return (pt->size == 0);
 }

@@ -25,4 +25,5 @@ t_node* deleteFirst(t_node **head);
 void merge_sort(t_node** headRef);
 t_node *deleteLast(t_node **head);
 void bubbleSort(t_node **headRef);
+int   get_index_of(t_node *pt, void *data);
 #endif

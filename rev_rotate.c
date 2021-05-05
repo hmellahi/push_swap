@@ -1,49 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 18:35:25 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/04 06:06:33 by hamza            ###   ########.fr       */
+/*   Created: 2021/05/04 06:29:53 by hamza             #+#    #+#             */
+/*   Updated: 2021/05/04 06:30:26 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int    swap(t_stack *list)
+int    rev_rotate(t_stack *stack)
 {
-    int *cpy;
-    t_node *head;
-
-    head = (t_node*)list->head;
-    if (list->size < 2)
+    if (stack->size < 2)
         return (FALSE);
-    cpy = head->data;
-    head->data = head->next->data;
-    head->next->data = cpy;
+    LeftshiftList((t_node **)&stack->head);
     if (CHECKER)
         return (TRUE);
-    ft_putstr("s");
-    ft_putchar(list->name);
+    ft_putstr("rr");
+    ft_putchar(stack->name);
     ft_putstr("\n");
     return (TRUE);
 }
 
-int    swap_list_a(t_stack *list_a, t_stack *list_b)
+int    rev_rotate_a(t_stack *fs, t_stack *ss)
 {
-    return (swap(list_a));
+    rev_rotate(fs);
+    return (TRUE);
 }
 
-int    swap_list_b(t_stack *list_a, t_stack *list_b)
+int    rev_rotate_b(t_stack *fs, t_stack *ss)
 {
-    return (swap(list_b));
+    rev_rotate(ss);
+    return (TRUE);
 }
 
-int    swap_both(t_stack *list_a, t_stack *list_b)
+int    rev_rotate_both(t_stack *fs, t_stack *ss)
 {
-    swap(list_a);
-    swap(list_b);
+    rev_rotate(fs);
+    rev_rotate(ss);
     return (TRUE);
 }

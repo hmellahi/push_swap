@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   delete_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 15:49:21 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/04 06:02:06 by hamza            ###   ########.fr       */
+/*   Created: 2021/05/04 06:24:21 by hamza             #+#    #+#             */
+/*   Updated: 2021/05/04 06:24:38 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
-#include "utils.h"
-#include "stack.h"
-#include "double_linked_list.h"
-#include <unistd.h>
-#define FALSE 0
-#define TRUE 1
-#define ERROR 1
-#define COMPLETED 2
-#define NONE 3
+#include "checker.h"
 
-int		ft_strlen(char *str);
-void    insert_nums(t_stack *list_a, t_stack *list_b, int ac, char **av);
+t_node *deleteFirst(t_node **head)
+{
+   t_node *temp;
 
-typedef char* t_string;
+   temp = *head;
+   if ((*head)->next == (*head))
+   {
+      (*head) = NULL;
+      return NULL;
+   }
+   (*head)->next->prev = (*head)->prev;
+   (*head)->prev->next = (*head)->next;
+   (*head) = (*head)->next;
+   return (temp);
+}
