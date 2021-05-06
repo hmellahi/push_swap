@@ -1,18 +1,18 @@
 #include "checker.h"
 
-int is_digit(char c)
+int	is_digit(char c)
 {
-    return (c >= '0' && c <= '9');
+	return (c >= '0' && c <= '9');
 }
 
-int ft_exit(int status)
+int	ft_exit(int status)
 {
-    if (status == ERROR)
-        ft_putstr("Error\n");
-    exit(status);
+	if (status == ERROR)
+		ft_putstr("Error\n");
+	exit(status);
 }
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -42,8 +42,8 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= 48 && str[i] <= 57)
 	{
-        if (num >= 2147483647)
-            return	(-1);
+		if (num >= 2147483647)
+			return (-1);
 		num = num * 10 + (str[i] - 48);
 		i++;
 	}

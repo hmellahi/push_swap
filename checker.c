@@ -14,18 +14,17 @@
 
 void    read_cmds(t_stack *list_a, t_stack *list_b)
 {
-    int     nbytes;
-    char    *inst;
+	int     nbytes;
+	char    *inst;
 
     nbytes = 1;
     while (nbytes)
     {
-        nbytes = read_line(0, &inst);
-        if (!nbytes && ft_strlen(inst) == 0)
+		nbytes = read_line(0, &inst);
+		if (!nbytes && ft_strlen(inst) == 0)
             break;
-        exect_inst(list_a, list_b, inst);
-        // free(inst);
-    }
+		exect_inst(list_a, list_b, inst);
+	}
 }
 
 int main(int ac, char **av)
