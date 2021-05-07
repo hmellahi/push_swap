@@ -12,9 +12,9 @@
 
 #include "checker.h"
 
-t_stack *newStack(char name)
+t_stack	*newStack(char name)
 {
-	t_stack *pt;
+	t_stack	*pt;
 
 	pt = (t_stack *)malloc(sizeof(t_stack));
 	pt->size = 0;
@@ -24,49 +24,51 @@ t_stack *newStack(char name)
 	return (pt);
 }
 
-t_stack *cpy(t_stack *old)
+t_stack	*cpy(t_stack *old)
 {
-	t_stack *new;
-	t_node *curr;
+	t_stack	*new;
+	t_node	*curr;
 
 	new = newStack(old->name);
 	curr = old->head;
-	while(1)
+	while (1)
 	{
 		push(new, curr->data);
 		curr = curr->next;
 		if (curr == old->head)
-			break;
+			break ;
 	}
 	return (new);
 }
 
-int     is_equal(t_stack *a, t_stack *b)
+int	is_equal(t_stack *a, t_stack *b)
 {
-	t_node *curr2;
-	t_node  *curr;
+	t_node	*curr2;
+	t_node	*curr;
 
 	curr = a->head;
 	curr2 = b->head;
-	while(1)
+	while (1)
 	{
 		if (void_to_num(curr->data) != void_to_num(curr2->data))
 			return (FALSE);
 		curr = curr->next;
 		curr2 = curr2->next;
 		if (curr == a->head || curr2 == b->head)
-			break;
+			break ;
 	}
-	return (void_to_num(curr->data) == void_to_num(curr2->data) ? TRUE : FALSE);
+	if (void_to_num(curr->data) == void_to_num(curr2->data))
+		return (TRUE);
+	return (FALSE);
 }
 
-void push(t_stack *pt, void *x)
+void	push(t_stack *pt, void *x)
 {
 	insertLast(&pt->head, x);
 	pt->size++;
 }
 
-void push2(t_stack *pt, void *x)
+void	push2(t_stack *pt, void *x)
 {
 	insertFirst(&pt->head, x);
 	pt->size++;

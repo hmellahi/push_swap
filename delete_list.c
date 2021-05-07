@@ -12,15 +12,15 @@
 
 #include "checker.h"
 
-t_node *deleteFirst(t_node **head)
+t_node	*deletefirst(t_node **head)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = *head;
 	if ((*head)->next == (*head))
 	{
 		(*head) = NULL;
-		return NULL;
+		return (NULL);
 	}
 	(*head)->next->prev = (*head)->prev;
 	(*head)->prev->next = (*head)->next;

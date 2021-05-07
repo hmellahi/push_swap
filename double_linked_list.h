@@ -21,7 +21,7 @@ void display_list(t_node *head, int type);
 t_node* SortedMerge(t_node* a, t_node* b);
 void FrontBackSplit(t_node* source,
 t_node** frontRef, t_node** backRef);
-t_node* deleteFirst(t_node **head);
+t_node* deletefirst(t_node **head);
 void merge_sort(t_node** headRef);
 t_node *deleteLast(t_node **head);
 void bubbleSort(t_node **headRef);

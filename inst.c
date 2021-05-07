@@ -1,12 +1,12 @@
 #include "checker.h"
 
-t_string    *init_insts(void)
+t_string	*init_insts(void)
 {
 	int			n;
 	t_string	*inst_list;
 
 	n = 12;
-	inst_list = malloc(sizeof(char*) * 12);
+	inst_list = malloc(sizeof(char *) * 12);
 	while (n--)
 		inst_list[n] = malloc(sizeof(char) * 12);
 	inst_list[0] = "sa";
@@ -24,11 +24,10 @@ t_string    *init_insts(void)
 	return (inst_list);
 }
 
-int exect_inst(t_stack *fs, t_stack *ss, t_string inst)
+int	exect_inst(t_stack *fs, t_stack *ss, t_string inst)
 {
-	int index;
-	t_string    *inst_list;
-	t_string    inst;
+	int			index;
+	t_string	*inst_list;
 
 	inst_list = init_insts();
 	index = -1;
@@ -44,9 +43,9 @@ int exect_inst(t_stack *fs, t_stack *ss, t_string inst)
 	return (ft_exit(ERROR));
 }
 
-int (*run_inst(int index))(t_stack *fs, t_stack *ss)
+int	(*run_inst(int index))(t_stack *fs, t_stack *ss)
 {
-	int (*funcs[12])(t_stack * fs, t_stack * ss);
+	int	(*funcs[12])(t_stack *fs, t_stack *ss);
 
 	funcs[0] = swap_list_a;
 	funcs[1] = swap_list_b;

@@ -12,17 +12,17 @@
 
 #include "checker.h"
 
-void  freeList(t_node **head)
+void	freeList(t_node **head)
 {
-   t_node *curr;
-   t_node *tmp;
+	t_node	*curr;
+	t_node	*tmp;
 
-   curr = *head;
-   while (curr->next != *head)
-   {
-      tmp = curr->next;
-      free(curr->data);
-      free(curr);
-      curr = tmp;
-   }
+	curr = *head;
+	while (curr->next != *head)
+	{
+		tmp = curr->next;
+		free(curr->data);
+		free(curr);
+		curr = tmp;
+	}
 }

@@ -12,11 +12,11 @@
 
 #include "checker.h"
 
-void    insert_nums(t_stack *list_a, t_stack *list_b, int ac, char **av)
+void	insert_nums(t_stack *list_a, t_stack *list_b, int ac, char **av)
 {
-	int i;
-	int j;
-	long *k;
+	int		i;
+	int		j;
+	long	*k;
 
 	i = 0;
 	while (++i <= ac)
@@ -29,7 +29,7 @@ void    insert_nums(t_stack *list_a, t_stack *list_b, int ac, char **av)
 		}
 		k = malloc(sizeof(long));
 		*k = ft_atoi(av[i]);
-		if (!is_unique(list_a, (int*)k) || *k < 0)
+		if (!is_unique(list_a, (int *)k) || *k < 0)
 			ft_exit(ERROR);
 		push(list_a, k);
 	}
