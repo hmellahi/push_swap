@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:45:29 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/05 17:58:57 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/05/06 02:01:55 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int    get_sec_index(t_stack *list_a, int max_of_cc, int *sec_index, int first_i
     return (hold_sec);
 }
 
-int     sort_n_nums(t_stack *sorted_list, t_stack *list_a, t_stack *list_b)
+int     sort_n_nums( t_stack *sorted_list, t_stack *list_a, t_stack *list_b)
 {
     int chunk_index;
     int chunk_size;
@@ -69,10 +69,12 @@ int     sort_n_nums(t_stack *sorted_list, t_stack *list_a, t_stack *list_b)
     int i;
 
     chunk_size = 2;
-    if (list_a->size == 500)
-        chunk_size = list_a->size / 40;
-    else if (list_a->size >= 100)
+    if (list_a->size == 2)
+        chunk_size = 1;
+    else if (list_a->size == 500)
         chunk_size = list_a->size / 10;
+    else if (list_a->size >= 100)
+        chunk_size = list_a->size / 5;
     chunk_index = 0;
     i = 0;
     while (!is_empty(list_a))
@@ -96,18 +98,15 @@ int     sort_n_nums(t_stack *sorted_list, t_stack *list_a, t_stack *list_b)
         display(list_b);
         if (hold_first < peek(list_b))
         {
-            i = -1;
-            while (++i < list_a->size)
+            index = 0;
+            while (++index < list_b->size)
             {
-                int x = void_to_num(get(list_b, i)->data);
-                if (x < hold_first)
-                {
-                    index = i - 1;
+                int x = void_to_num(get(list_b, index)->data);
+                if (hold_first > x)
                     break;
-                }
             }
-            if (i >= list_a->size / 2)
-                index -= list_a->size;
+            if (index >= list_b->size / 2)
+                index -= list_b->size;  
             move_to_top(list_b, index);
             push_in_b(list_a, list_b);
             //move_to_top(list_b, -index);
