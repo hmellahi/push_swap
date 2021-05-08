@@ -1,20 +1,21 @@
 #include "checker.h"
 
-char  * ft_strdup(const char *str)
+char	*ft_strdup(const char *str)
 {
 	int		len;
 	char	*dest;
 
 	len = ft_strlen((char *)str);
-	if (!(dest = (char *)malloc(sizeof(char) * len + 1)))
+	dest = (char *)malloc(sizeof(char) * len + 1);
+	if (!dest)
 		return (NULL);
 	dest[len] = 0;
 	while (len--)
-		dest[len] = ((char*)str)[len];
+		dest[len] = ((char *)str)[len];
 	return (dest);
 }
 
-char		*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	char	*str;
 
@@ -26,7 +27,7 @@ char		*ft_strchr(const char *s, int c)
 	return (str);
 }
 
-char		*join(char const *s1, char const *s2)
+char	*join(char const *s1, char const *s2)
 {
 	int		i;
 	int		k;
@@ -36,7 +37,8 @@ char		*join(char const *s1, char const *s2)
 	i = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(s12 = malloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1)))
+	s12 = malloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1);
+	if (!s12)
 		return (NULL);
 	while (s1[i])
 	{
@@ -48,12 +50,3 @@ char		*join(char const *s1, char const *s2)
 	s12[i] = 0;
 	return (s12);
 }
-
-// void	sf_malloc(int bytes)
-// {
-// 	void*		ptr;
-// 	static int	i;
-
-// 	ptr = malloc(bytes);
-// 	adresses[i] = ptr;
-// }

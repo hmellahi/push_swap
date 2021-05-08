@@ -12,22 +12,25 @@
 
 #include "checker.h"
 
-void display_list(t_node *head, int type)
+void	display_list(t_node *head, int type)
 {
-   t_node *ptr = head;
-   ft_putstr("\n[ ");
-   while (ptr != NULL)
-   {
-      if (type == INT) {
-         ft_putnbr(void_to_num(ptr->data));
-         fflush(stdout);
-      }
-      else
-         ft_putstr(ptr->data);
-      ptr = ptr->next;
-      ft_putstr("|");
-      if (ptr == head)
-         break;
-   }
-   ft_putstr(" ]\n");
+	t_node	*ptr;
+
+	ptr = head;
+	ft_putstr("\n[ ");
+	while (ptr != NULL)
+	{
+		if (type == INT)
+		{
+			ft_putnbr(void_to_num(ptr->data));
+			fflush(stdout);
+		}
+		else
+			ft_putstr(ptr->data);
+		ptr = ptr->next;
+		ft_putstr("|");
+		if (ptr == head)
+			break ;
+	}
+	ft_putstr(" ]\n");
 }

@@ -12,34 +12,34 @@
 
 #include "checker.h"
 
-int    rev_rotate(t_stack *stack)
+int	rev_rotate(t_stack *stack)
 {
-    if (stack->size < 2)
-        return (FALSE);
-    LeftshiftList((t_node **)&stack->head);
-    if (CHECKER)
-        return (TRUE);
-    ft_putstr("rr");
-    ft_putchar(stack->name);
-    ft_putstr("\n");
-    return (TRUE);
+	if (stack->size < 2)
+		return (FALSE);
+	LeftshiftList((t_node **)&stack->head);
+	if (CHECKER)
+		return (TRUE);
+	ft_putstr("rr");
+	ft_putchar(stack->name);
+	ft_putstr("\n");
+	return (TRUE);
 }
 
-int    rev_rotate_a(t_stack *fs, t_stack *ss)
+int	rev_rotate_a(t_stack *fs, t_stack *ss)
 {
-    rev_rotate(fs);
-    return (TRUE);
+	rev_rotate(fs);
+	return (TRUE);
 }
 
-int    rev_rotate_b(t_stack *fs, t_stack *ss)
+int	rev_rotate_b(t_stack *fs, t_stack *ss)
 {
-    rev_rotate(ss);
-    return (TRUE);
+	rev_rotate(ss);
+	return (TRUE);
 }
 
-int    rev_rotate_both(t_stack *fs, t_stack *ss)
+int	rev_rotate_both(t_stack *fs, t_stack *ss)
 {
-    rev_rotate(fs);
-    rev_rotate(ss);
-    return (TRUE);
+	rev_rotate(fs);
+	rev_rotate(ss);
+	return (TRUE);
 }

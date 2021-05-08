@@ -6,7 +6,7 @@ SRC_FILES = inst.c rotate.c utils.c \
 push_swap = push_swap
 checker = checker
 FLAGS = -g #-fsanitize=address #-Wall -Werror -Wextra
-push_swap : 
+push_swap :
 	gcc push_swap.c ${FLAGS} ${SRC_FILES} -D CHECKER=0 -o push_swap
 checker : 
 	gcc checker.c read_line.c utils3.c ${SRC_FILES} -D CHECKER=1 -o checker

@@ -12,34 +12,34 @@
 
 #include "checker.h"
 
-int    push_in_a(t_stack *a, t_stack *b)
+int	push_in_a(t_stack *a, t_stack *b)
 {
-    int *top;
+	int	*top;
 
-    if (b->size == 0)
-        return (FALSE);
-    top = malloc(4);
-    *top = pop(b);
-    push2(a, top);
-    b->size--;
-    if (CHECKER)
-        return (TRUE);
-    ft_putstr("pa\n");
-    return (TRUE);
+	if (b->size == 0)
+		return (FALSE);
+	top = malloc(4);
+	*top = pop(b);
+	push2(a, top);
+	b->size--;
+	if (CHECKER)
+		return (TRUE);
+	ft_putstr("pa\n");
+	return (TRUE);
 }
 
-int    push_in_b(t_stack *a, t_stack *b)
+int	push_in_b(t_stack *a, t_stack *b)
 {
-    int *top;
+	int	*top;
 
-    if (a->size == 0)
-        return (FALSE);
-    top = malloc(4);
-    *top = pop(a);
-    push2(b, top);
-    a->size--;
-    if (CHECKER)
-        return (TRUE);
-    ft_putstr("pb\n");
-    return (TRUE);
+	if (a->size == 0)
+		return (FALSE);
+	top = malloc(4);
+	*top = pop(a);
+	push2(b, top);
+	a->size--;
+	if (CHECKER)
+		return (TRUE);
+	ft_putstr("pb\n");
+	return (TRUE);
 }

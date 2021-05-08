@@ -12,37 +12,36 @@
 
 #include "checker.h"
 
-void    read_cmds(t_stack *list_a, t_stack *list_b)
+void	read_cmds(t_stack *list_a, t_stack *list_b)
 {
-    int     nbytes;
-    char    *inst;
+	int		nbytes;
+	char	*inst;
 
-    nbytes = 1;
-    while (nbytes)
-    {
-        nbytes = read_line(0, &inst);
-        if (!nbytes && ft_strlen(inst) == 0)
-            break;
-        exect_inst(list_a, list_b, inst);
-        // free(inst);
-    }
+	nbytes = 1;
+	while (nbytes)
+	{
+		nbytes = read_line(0, &inst);
+		if (!nbytes && ft_strlen(inst) == 0)
+			break ;
+		exect_inst(list_a, list_b, inst);
+	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_stack *list_a;
-    t_stack *list_b;
+	t_stack	*list_a;
+	t_stack	*list_b;
 
-    list_a = newStack('a');
-    list_b = newStack('b');
-    if (ac == 0)
-        return (ft_exit(NONE));
-    insert_nums(list_a, list_b, --ac, av);
-    read_cmds(list_a, list_b);
-    display(list_a);
-    if (is_sorted(list_a) && is_empty(list_b))
-        ft_putstr("OK\n");
-    else
-        ft_putstr("KO\n");
-    return (0);
+	list_a = newStack('a');
+	list_b = newStack('b');
+	if (ac == 0)
+		return (ft_exit(NONE));
+	insert_nums(list_a, list_b, --ac, av);
+	read_cmds(list_a, list_b);
+	display(list_a);
+	if (is_sorted(list_a) && is_empty(list_b))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+	return (0);
 }
