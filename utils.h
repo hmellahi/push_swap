@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 18:37:17 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/01 17:35:02 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/05/08 22:55:18 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ void	ft_putnbr(int nb);
 void	ft_putstr(char const *s);
 int ft_exit(int status);
 int (*run_inst(int index))(t_stack *fs, t_stack *ss);
-int exect_inst(t_stack *fs, t_stack *ss, t_string inst);
+int	exect_inst(t_stack *fs, t_stack *ss, t_string inst, t_string *inst_list);
 int		ft_strlen(char *str);
-int exect_inst(t_stack *fs, t_stack *ss, t_string inst);
 int (*run_inst(int index))(t_stack *fs, t_stack *ss);
 int		ft_atoi(const char *str);
 int		read_line(int fd, char **line);

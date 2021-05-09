@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 16:51:48 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/02 16:52:12 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:19:20 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	bubbleSort(t_node **headRef)
+void	bubble_sort(t_node **headRef)
 {
 	t_node	*itr;
 	t_node	*itr2;
@@ -20,31 +20,20 @@ void	bubbleSort(t_node **headRef)
 	int		*temp;
 
 	head = *headRef;
-	//itr = head;
-	// while (itr->next != head)
-	// {
-	// 	itr2 = itr->next;
-	// 	while (itr2 != head)
-	// 	{
-	// 		if (void_to_num(itr->data) > void_to_num(itr2->data))
-	// 		{
-	// 			temp = itr->data;
-	// 			itr->data = itr2->data;
-	// 			itr2->data = temp;
-	// 		}
-	// 		itr2 = itr2->next;
-	// 	}
-	// 	itr = itr->next;
-	// }
-	for(itr = head; itr->next != head; itr = itr->next) {
-		for(itr2 = itr->next; itr2 != head; itr2 = itr2->next)
+	itr = head;
+	while (itr->next != head)
+	{
+		itr2 = itr->next;
+		while (itr2 != head)
 		{
-			if(void_to_num(itr->data) > void_to_num(itr2->data))
+			if (void_to_num(itr->data) > void_to_num(itr2->data))
 			{
 				temp = itr->data;
 				itr->data = itr2->data;
 				itr2->data = temp;
 			}
+			itr2 = itr2->next;
 		}
+		itr = itr->next;
 	}
 }

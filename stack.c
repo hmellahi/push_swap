@@ -6,7 +6,7 @@
 /*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:31:55 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/04 06:37:34 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/09 00:45:01 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ t_stack	*cpy(t_stack *old)
 {
 	t_stack	*new;
 	t_node	*curr;
+	int		*data;
 
 	new = newStack(old->name);
 	curr = old->head;
 	while (1)
 	{
-		push(new, curr->data);
+		data = malloc(sizeof(int));
+		*data = void_to_num(curr->data);
+		push(new, data);
 		curr = curr->next;
 		if (curr == old->head)
 			break ;

@@ -6,7 +6,7 @@
 /*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 18:35:25 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/04 06:06:33 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/08 03:17:04 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ int	swap(t_stack *list)
 
 int	swap_list_a(t_stack *list_a, t_stack *list_b)
 {
+	(void)list_b;
 	return (swap(list_a));
 }
 
 int	swap_list_b(t_stack *list_a, t_stack *list_b)
 {
+	(void)list_a;
 	return (swap(list_b));
 }
 

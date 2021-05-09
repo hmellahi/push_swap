@@ -6,7 +6,7 @@
 /*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:49:21 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/04 06:02:06 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/08 03:12:35 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@
 #define NONE 3
 
 int		ft_strlen(char *str);
-void    insert_nums(t_stack *list_a, t_stack *list_b, int ac, char **av);
+void	insert_nums(t_stack *list_a, int ac, char **av);
 
 typedef char* t_string;

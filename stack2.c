@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:36:34 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/05 15:42:58 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/05/09 00:17:12 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	pop(t_stack *pt)
 	return (first_num);
 }
 
-#define DEBUG 1
+#define DEBUG 0
 void	display(t_stack *pt)
 {
 	if (!DEBUG)

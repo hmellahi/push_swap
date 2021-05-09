@@ -6,7 +6,7 @@
 /*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:29:53 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/04 06:30:26 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/08 03:13:17 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ int	rev_rotate(t_stack *stack)
 
 int	rev_rotate_a(t_stack *fs, t_stack *ss)
 {
+	(void)ss;
 	rev_rotate(fs);
 	return (TRUE);
 }
 
 int	rev_rotate_b(t_stack *fs, t_stack *ss)
 {
+	(void)fs;
 	rev_rotate(ss);
 	return (TRUE);
 }

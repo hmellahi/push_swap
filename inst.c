@@ -2,39 +2,34 @@
 
 t_string	*init_insts(void)
 {
-	int			n;
 	t_string	*inst_list;
 
-	n = 12;
 	inst_list = malloc(sizeof(char *) * 12);
-	while (n--)
-		inst_list[n] = malloc(sizeof(char) * 12);
-	inst_list[0] = "sa";
-	inst_list[1] = "sb";
-	inst_list[2] = "ss";
-	inst_list[3] = "pa";
-	inst_list[4] = "pb";
-	inst_list[5] = "ra";
-	inst_list[6] = "rb";
-	inst_list[7] = "rr";
-	inst_list[8] = "rra";
-	inst_list[9] = "rrb";
-	inst_list[10] = "rrr";
+	inst_list[0] = ft_strdup("sa");
+	inst_list[1] = ft_strdup("sb");
+	inst_list[2] = ft_strdup("ss");
+	inst_list[3] = ft_strdup("pa");
+	inst_list[4] = ft_strdup("pb");
+	inst_list[5] = ft_strdup("ra");
+	inst_list[6] = ft_strdup("rb");
+	inst_list[7] = ft_strdup("rr");
+	inst_list[8] = ft_strdup("rra");
+	inst_list[9] = ft_strdup("rrb");
+	inst_list[10] = ft_strdup("rrr");
 	inst_list[11] = NULL;
 	return (inst_list);
 }
 
-int	exect_inst(t_stack *fs, t_stack *ss, t_string inst)
+int	exect_inst(t_stack *fs, t_stack *ss, t_string inst, t_string *inst_list)
 {
 	int			index;
-	t_string	*inst_list;
+	t_string	ins;
 
-	inst_list = init_insts();
 	index = -1;
 	while (++index < 11)
 	{
-		inst = inst_list[index];
-		if (strcmp(inst, inst) == 0)
+		ins = inst_list[index]; 
+		if (strcmp(inst, ins) == 0)
 		{
 			(run_inst(index))(fs, ss);
 			return (TRUE);

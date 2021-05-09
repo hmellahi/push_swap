@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 18:39:42 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/05 16:02:57 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:13:40 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int	rotate(t_stack *stack)
 
 int	rotate_a(t_stack *fs, t_stack *ss)
 {
+	(void)ss;
 	return (rotate(fs));
 }
 
 int	rotate_b(t_stack *fs, t_stack *ss)
 {
+	(void)fs;
 	return (rotate(ss));
 }
 

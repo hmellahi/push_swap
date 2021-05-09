@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 00:59:09 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/05 16:09:40 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/05/09 00:45:31 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int 	sort_three_nums(t_stack *list_a)
 	t_stack	*sorted_list;
 
 	sorted_list = cpy(list_a);
-	bubbleSort(&sorted_list->head);
+	bubble_sort(&sorted_list->head);
 	max = get(sorted_list, 2)->data;
 	index_of_max = get_index_of(list_a->head, max);
 	if (index_of_max == 0)
@@ -45,6 +45,7 @@ int 	sort_three_nums(t_stack *list_a)
 		rev_rotate(list_a);
 	if (!is_equal(sorted_list, list_a))
 		swap(list_a);
+	free_stack(&sorted_list);
 	return (0);
 }
 
@@ -78,7 +79,6 @@ void	moves_back_to_a(t_stack *list_a, t_stack *list_b, t_stack *sorted_list)
 	int	*max;
 	int	moves;
 	int	i;
-	int	index;
 
 	i = 0;
 	while (!is_empty(list_b))
