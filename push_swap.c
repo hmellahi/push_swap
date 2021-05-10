@@ -59,23 +59,18 @@ int first_index)
 	return (hold_sec);
 }
 
-int	ss(t_stack*	sorted_list, int chunk_index, t_stack*	list_a, t_stack*	list_b)
+int	ss(t_stack *sorted_list, int chunk_index, t_stack *list_a, t_stack *list_b)
 {
 	int	first_index;
 	int	sec_index;
-	//int	hold_first;
 	int	max_of_cc;
-	//int	hold_sec;
 	int	index;
 
 	max_of_cc = void_to_num(get(sorted_list, chunk_index - 1)->data);
 	get_first_index(list_a, max_of_cc, &first_index);
 	get_sec_index(list_a, max_of_cc, &sec_index, first_index);
 	if (abs(first_index) > abs(sec_index))
-	{
 		index = sec_index;
-		//hold_first = hold_sec;
-	}
 	else
 		index = first_index;
 	move_to_top(list_a, index);
@@ -85,30 +80,30 @@ int	ss(t_stack*	sorted_list, int chunk_index, t_stack*	list_a, t_stack*	list_b)
 	return (0);
 }
 
-int     sort_n_nums( t_stack *sorted_list, t_stack *list_a, t_stack *list_b)
+int	sort_n_nums( t_stack *sorted_list, t_stack *list_a, t_stack *list_b)
 {
-	int chunk_index;
-	int chunk_size;
-	int i;
+	int	chunk_index;
+	int	chunk_size;
+	int	i;
 
-    chunk_size = 2;
-    if (list_a->size == 2)
-        chunk_size = 1;
-    else if (list_a->size == 500)
-        chunk_size = list_a->size / 10;
-    else if (list_a->size >= 100)
-        chunk_size = list_a->size / 5;
-    chunk_index = 0;
-    i = 0;
-    while (!is_empty(list_a))
-    {
-        if (i % chunk_size == 0)
-            chunk_index += chunk_size;
-        ss(sorted_list, chunk_index, list_a, list_b);
-        i++;
-    }
-    moves_back_to_a(list_a, list_b, sorted_list);
-    return (0);
+	chunk_size = 2;
+	if (list_a->size == 2)
+		chunk_size = 1;
+	else if (list_a->size == 500)
+		chunk_size = list_a->size / 10;
+	else if (list_a->size >= 100)
+		chunk_size = list_a->size / 5;
+	chunk_index = 0;
+	i = 0;
+	while (!is_empty(list_a))
+	{
+		if (i % chunk_size == 0)
+			chunk_index += chunk_size;
+		ss(sorted_list, chunk_index, list_a, list_b);
+		i++;
+	}
+	moves_back_to_a(list_a, list_b, sorted_list);
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -117,7 +112,7 @@ int	main(int ac, char **av)
 	t_stack	*list_b;
 	t_stack	*sorted_list;
 
-	list_a = newStack('a'); 
+	list_a = newStack('a');
 	list_b = newStack('b');
 	if (ac == 1)
 		return (ft_exit(ERROR));
