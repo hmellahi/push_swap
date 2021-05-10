@@ -6,7 +6,7 @@
 /*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:24:21 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/09 02:32:32 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/10 20:24:15 by hamza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_node	*deletefirst(t_node **head)
 	temp = *head;
 	if ((*head)->next == (*head))
 	{
+		free(temp->data);
+		free(temp);
 		(*head) = NULL;
 		return (NULL);
 	}
