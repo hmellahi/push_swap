@@ -35,8 +35,6 @@ t_node	*get(t_stack *pt, int index)
 {
 	t_node	*curr;
 
-	// if (pt->size < index)
-	//    return (NULL);
 	curr = pt->head;
 	while (index--)
 		curr = curr->next;

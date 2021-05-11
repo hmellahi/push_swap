@@ -18,11 +18,11 @@
 
 typedef struct  s_stack
 {
-    int     size;
-    int     type;
-    char    name;
-    t_node  *head;
-    t_node  *actions;
+	int     size;
+	int     type;
+	char    name;
+	t_node  *head;
+	t_node  *actions;
 }               t_stack;
 
 int         peek(t_stack *pt);

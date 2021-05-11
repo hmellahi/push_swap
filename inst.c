@@ -28,7 +28,7 @@ int	exect_inst(t_stack *fs, t_stack *ss, t_string inst, t_string *inst_list)
 	index = -1;
 	while (++index < 11)
 	{
-		ins = inst_list[index]; 
+		ins = inst_list[index];
 		if (strcmp(inst, ins) == 0)
 		{
 			(run_inst(index))(fs, ss);

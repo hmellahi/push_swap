@@ -10,21 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
-#include "utils.h"
-#include "stack.h"
-#include "double_linked_list.h"
-#include <unistd.h>
-#define FALSE 0
-#define TRUE 1
-#define ERROR 1
-#define COMPLETED 2
-#define NONE 3
+#ifndef CHECKER_H
+# define CHECKER_H
+# include <stdio.h>
+# include <string.h>
+# include <stdlib.h>
+# include <math.h>
+# include "utils.h"
+# include "stack.h"
+# include "double_linked_list.h"
+# include <unistd.h>
+# define BUFFER_SIZE 1
+# define FALSE 0
+# define TRUE 1
+# define ERROR 1
+# define COMPLETED 2
+# define NONE 3
 
 int		ft_strlen(char *str);
 void	insert_nums(t_stack *list_a, int ac, char **av);
 
-typedef char* t_string;
+typedef char*	t_string;
+#endif

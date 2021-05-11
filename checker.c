@@ -30,7 +30,7 @@ void	read_cmds(t_stack *list_a, t_stack *list_b)
 	}
 	free(inst);
 	nbytes = -1;
-	while(inst_list[++nbytes])
+	while (inst_list[++nbytes])
 		free(inst_list[nbytes]);
 	free(inst_list);
 }
