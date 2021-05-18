@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:45:29 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/09 18:47:43 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/16 18:32:06 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int ac, char **av)
 	list_a = newStack('a');
 	list_b = newStack('b');
 	if (ac == 1)
-		return (ft_exit(ERROR));
+		return (ft_exit(COMPLETED));
 	insert_nums(list_a, --ac, av);
 	sorted_list = cpy(list_a);
 	bubble_sort(&sorted_list->head);

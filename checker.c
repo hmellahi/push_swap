@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamza <hamza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 17:22:11 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/05/09 18:49:02 by hamza            ###   ########.fr       */
+/*   Updated: 2021/05/16 18:22:41 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	list_a = newStack('a');
 	list_b = newStack('b');
 	if (ac == 1)
-		return (ft_exit(NONE));
+		return (ft_exit(COMPLETED));
 	insert_nums(list_a, --ac, av);
 	read_cmds(list_a, list_b);
 	display(list_a);
