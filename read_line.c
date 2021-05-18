@@ -34,6 +34,7 @@ int	read_line(int fd, char **line)
 	if (!*line)
 		return (-1);
 	*line[0] = '\0';
+	flag = 1;
 	while (flag > 0)
 	{
 		flag = read(fd, buffer, 1);

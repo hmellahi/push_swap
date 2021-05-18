@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:45:29 by hamza             #+#    #+#             */
-/*   Updated: 2021/05/16 18:32:06 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:21:59 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int first_index)
 	return (hold_sec);
 }
 
-int	ss(t_stack *sorted_list, int chunk_index, t_stack *list_a, t_stack *list_b)
+int	sort(t_stack *sorted_list, int chunk_index, t_stack *list_a, t_stack *list_b)
 {
 	int	first_index;
 	int	sec_index;
@@ -99,7 +99,7 @@ int	sort_n_nums( t_stack *sorted_list, t_stack *list_a, t_stack *list_b)
 	{
 		if (i % chunk_size == 0)
 			chunk_index += chunk_size;
-		ss(sorted_list, chunk_index, list_a, list_b);
+		sort(sorted_list, chunk_index, list_a, list_b);
 		i++;
 	}
 	moves_back_to_a(list_a, list_b, sorted_list);
